@@ -32,7 +32,7 @@ class Square:
             tuple: The position as (x, y) coordinates.
         """
         return self.__position
-    
+
     @position.setter
     def position(self, value):
         """Set the position of the square with validation.
@@ -86,7 +86,7 @@ class Square:
 
     def my_print(self):
         """Print the square using the '#' character.
-        
+
         If size is 0, prints an empty line.
         """
         if self.__size == 0:
