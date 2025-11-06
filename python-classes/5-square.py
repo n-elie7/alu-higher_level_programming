@@ -4,14 +4,14 @@
 
 class Square:
     """A class that represents a square with validated size.
-    
+
     Attributes:
         size (int): The size of the square's side (must be >= 0).
     """
 
     def __init__(self, size=0):
         """Initialize a new Square instance.
-        
+
         Args:
             size (int, optional): The size of the square's side. Defaults to 0.
         
@@ -57,7 +57,7 @@ class Square:
 
     def my_print(self):
         """Print the square using the '#' character.
-        
+
         If size is 0, prints an empty line.
         """
         if self.__size == 0:
