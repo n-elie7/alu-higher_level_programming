@@ -100,7 +100,8 @@ class Rectangle:
         """Return a string representation of the rectangle for eval()
 
         Returns:
-            str: A string that can be used to recreate the rectangle with eval()
+            str: A string that can be used to
+            recreate the rectangle with eval()
         """
         return "Rectangle({}, {})".format(self.__width, self.__height)
 
