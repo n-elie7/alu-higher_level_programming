@@ -100,7 +100,6 @@ class Square:
             str: The square formatted with # characters and positioning.
         """
         if self.__size == 0:
-            print()
             return ""
 
         lines = []
