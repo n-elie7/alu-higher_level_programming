@@ -106,7 +106,7 @@ class Square:
             other (Square): Another Square instance.
 
         Returns:
-            bool: True if this area is greater than other area, 
+            bool: True if this area is greater than other area,
             False otherwise.
         """
         return self.area() > other.area()
