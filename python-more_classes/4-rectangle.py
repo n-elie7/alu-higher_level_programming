@@ -7,7 +7,7 @@ class Rectangle:
 
     def __init__(self, width=0, height=0):
         """Initialize a new Rectangle instance
-        
+
         Args:
             width (int): The width of the rectangle (default: 0)
             height (int): The height of the rectangle (default: 0)
@@ -23,10 +23,10 @@ class Rectangle:
     @width.setter
     def width(self, value):
         """Set the width of the rectangle
-        
+
         Args:
             value (int): The width value
-            
+
         Raises:
             TypeError: If width is not an integer
             ValueError: If width is less than 0
@@ -45,10 +45,10 @@ class Rectangle:
     @height.setter
     def height(self, value):
         """Set the height of the rectangle
-        
+
         Args:
             value (int): The height value
-            
+
         Raises:
             TypeError: If height is not an integer
             ValueError: If height is less than 0
@@ -61,7 +61,7 @@ class Rectangle:
 
     def area(self):
         """Calculate and return the area of the rectangle
-        
+
         Returns:
             int: The area (width * height)
         """
@@ -69,9 +69,10 @@ class Rectangle:
 
     def perimeter(self):
         """Calculate and return the perimeter of the rectangle
-        
+
         Returns:
-            int: The perimeter (2 * (width + height)), or 0 if width or height is 0
+            int: The perimeter (2 * (width + height)),
+            or 0 if width or height is 0
         """
         if self.__width == 0 or self.__height == 0:
             return 0
@@ -79,13 +80,14 @@ class Rectangle:
 
     def __str__(self):
         """Return a string representation of the rectangle using # characters
-        
+
         Returns:
-            str: The rectangle drawn with # characters, or empty string if width or height is 0
+            str: The rectangle drawn with # characters,
+            or empty string if width or height is 0
         """
         if self.__width == 0 or self.__height == 0:
             return ""
-        
+
         rectangle_str = []
         for i in range(self.__height):
             rectangle_str.append("#" * self.__width)
@@ -93,8 +95,9 @@ class Rectangle:
 
     def __repr__(self):
         """Return a string representation of the rectangle for eval()
-        
+
         Returns:
-            str: A string that can be used to recreate the rectangle with eval()
+            str: A string that can be used to
+            recreate the rectangle with eval()
         """
         return "Rectangle({}, {})".format(self.__width, self.__height)
