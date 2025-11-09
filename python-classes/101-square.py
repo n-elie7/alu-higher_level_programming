@@ -91,7 +91,10 @@ class Square:
         Position[0] adds spaces before each line.
         Position[1] adds empty lines before the square.
         """
-        print(self.__str__())
+        if self.__size == 0:
+            print()
+        else:
+            print(self.__str__())
 
     def __str__(self):
         """Return string representation of the square.
