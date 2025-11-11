@@ -7,7 +7,7 @@ def lookup(obj):
 
     Args:
         obj: Any Python object
- 
+
     Returns:
         list: A list of attribute and method names available for the object
     """
