@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""module that returns the JSON 
+"""module that returns the JSON
 representation of an object (string)"""
 import json
 
