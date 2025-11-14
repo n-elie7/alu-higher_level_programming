@@ -17,6 +17,7 @@ codes = {
 total_size = 0
 line_count = 0
 
+
 def print_stats():
     """Prints the current statistics."""
     print("File size: {}".format(total_size))
