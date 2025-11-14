@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-
+"""module that creates pascal triangle"""
 def pascal_triangle(n):
+    """pascal triangle"""
     if n <= 0:
         return []
     
@@ -14,4 +15,3 @@ def pascal_triangle(n):
         triangle.append(row)
     
     return triangle
-
