@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Fetches https://alu-intranet.hbtn.io/status using requests module."""
+"""Fetches url using requests module."""
 
 import requests
 
 
-url = "https://alu-intranet.hbtn.io/status"
+url = "https://intranet.hbtn.io/status"
 
 response = requests.get(url)
 content = response.text

@@ -9,7 +9,8 @@ if __name__ == "__main__":
     repo_name = sys.argv[1]
     owner_name = sys.argv[2]
 
-    url = "https://api.github.com/repos/{}/{}/commits".format(owner_name, repo_name)
+    url = "https://api.github.com/repos/{}/{}/commits".format(
+        owner_name, repo_name)
 
     params = {"per_page": 10}
 
