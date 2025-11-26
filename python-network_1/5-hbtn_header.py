@@ -1,13 +1,10 @@
 #!/usr/bin/python3
-"""get specific header"""
+"""Fetches the value of X-Request-Id from the response header."""
 
-import requests
 import sys
+import requests
 
-if len(sys.argv) == 2:
+if __name__ == "__main__":
     url = sys.argv[1]
-
-    with requests.get(url) as response:
-        headers = response.headers
-        id_header = headers.get("X-Request-Id")
-        print(id_header)
+    response = requests.get(url)
+    print(response.headers.get("X-Request-Id"))

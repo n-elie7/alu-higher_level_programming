@@ -1,16 +1,12 @@
 #!/usr/bin/python3
-"""post email"""
+"""Sends a POST request with email and displays the body of the response."""
 
-import requests
 import sys
+import requests
 
-
-if len(sys.argv) == 3:
+if __name__ == "__main__":
     url = sys.argv[1]
     email = sys.argv[2]
-
     data = {"email": email}
-
-    with requests.post(url=url, params=data) as response:
-        result = response.text
-        print(result)
+    response = requests.post(url, data=data)
+    print(response.text)
