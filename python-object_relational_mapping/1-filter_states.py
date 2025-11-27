@@ -24,9 +24,8 @@ if __name__ == "__main__":
 
     # Case-sensitive match using BINARY
     cursor.execute(
-        "SELECT * FROM states WHERE " \
-        "BINARY name LIKE 'N%' ORDER BY id ASC"
-    )
+        "SELECT * FROM states WHERE BINARY name LIKE 'N%' ORDER BY id ASC"
+    )                                                                    
     rows = cursor.fetchall()
 
     for row in rows:

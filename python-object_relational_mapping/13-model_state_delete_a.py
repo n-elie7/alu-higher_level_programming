@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
     # Use ilike for case-insensitive search
     states = session.query(State).filter(
-        State.name.ilike("%a%")).all()
+        State.name.contains('a')).all()
     for state in states:
         session.delete(state)
     session.commit()
