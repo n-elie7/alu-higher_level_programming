@@ -26,13 +26,13 @@ ZeroDivisionError: division by zero
 >>> matrix_divided([[1, "2"], [3, 4]], 2)
 Traceback (most recent call last):
 ...
-TypeError: matrix must be a matrix of integers/floats
+TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 # Test Case 6: Matrix with None element
 >>> matrix_divided([[1, None], [3, 4]], 2)
 Traceback (most recent call last):
 ...
-TypeError: matrix must be a matrix of integers/floats
+TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 # Test Case 7: Rows of different sizes
 >>> matrix_divided([[1, 2, 3], [4, 5]], 2)
@@ -56,25 +56,25 @@ TypeError: div must be a number
 >>> matrix_divided("not a matrix", 2)
 Traceback (most recent call last):
 ...
-TypeError: matrix must be a matrix of integers/floats
+TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 # Test Case 11: matrix is an empty list
 >>> matrix_divided([], 2)
 Traceback (most recent call last):
 ...
-TypeError: matrix must be a matrix of integers/floats
+TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 # Test Case 12: matrix contains empty row
 >>> matrix_divided([[]], 2)
 Traceback (most recent call last):
 ...
-TypeError: matrix must be a matrix of integers/floats
+TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 # Test Case 13: matrix is a list of non-lists
 >>> matrix_divided([1, 2, 3], 2)
 Traceback (most recent call last):
 ...
-TypeError: matrix must be a matrix of integers/floats
+TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 # Test Case 14: Negative division
 >>> matrix_divided([[1, 2], [3, 4]], -2)
