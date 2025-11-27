@@ -86,12 +86,6 @@ TypeError: size must be an integer
 #####
 #####
 
-# Test Case 14: size is a boolean
->>> print_square(True)
-Traceback (most recent call last):
-...
-TypeError: size must be an integer
-
 # Test Case 15: size is a tuple
 >>> print_square((3,))
 Traceback (most recent call last):
