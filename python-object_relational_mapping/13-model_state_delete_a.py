@@ -28,7 +28,7 @@ if __name__ == "__main__":
     states = session.query(State).filter(
         func.lower(State.name).like('%a%')
     ).delete(synchronize_session=False)
-    
+
     session.commit()
 
     session.close()
