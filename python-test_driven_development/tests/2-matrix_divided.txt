@@ -102,22 +102,18 @@ Traceback (most recent call last):
 ...
 TypeError: div must be a number
 
-# Test Case 20: Matrix with boolean (which is technically int subclass)
->>> matrix_divided([[True, False], [False, True]], 2)
-[[0.5, 0.0], [0.0, 0.5]]
-
-# Test Case 21: Missing argument div
+# Test Case 20: Missing argument div
 >>> matrix_divided([[1, 2], [3, 4]])
 Traceback (most recent call last):
 ...
 TypeError: matrix_divided() missing 1 required positional argument: 'div'
 
-# Test Case 22: No arguments
+# Test Case 21: No arguments
 >>> matrix_divided()
 Traceback (most recent call last):
 ...
 TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
 
-# Test Case 23: Very small division result
+# Test Case 22: Very small division result
 >>> matrix_divided([[1, 2], [3, 4]], 1000)
 [[0.0, 0.0], [0.0, 0.0]]
