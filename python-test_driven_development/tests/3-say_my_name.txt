@@ -1,13 +1,107 @@
+"""
+Test cases for say_my_name function
+"""
+
 >>> say_my_name = __import__('3-say_my_name').say_my_name
->>> say_my_name("Bob", "Lenon")
-My name is Bob Lenon
+
+# Test Case 1: Two string arguments
+>>> say_my_name("John", "Smith")
+My name is John Smith
+
+# Test Case 2: Different names
+>>> say_my_name("Walter", "White")
+My name is Walter White
+
+# Test Case 3: Only first name (default last name)
 >>> say_my_name("Bob")
 My name is Bob 
->>> say_my_name(12, "Lenon")
+
+# Test Case 4: first_name is an integer
+>>> say_my_name(12, "White")
 Traceback (most recent call last):
 ...
 TypeError: first_name must be a string
->>> say_my_name("Bob", 12)
+
+# Test Case 5: last_name is an integer
+>>> say_my_name("John", 123)
 Traceback (most recent call last):
 ...
 TypeError: last_name must be a string
+
+# Test Case 6: first_name is None
+>>> say_my_name(None, "Smith")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+# Test Case 7: last_name is None
+>>> say_my_name("John", None)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+# Test Case 8: Both arguments are None
+>>> say_my_name(None, None)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+# Test Case 9: first_name is a list
+>>> say_my_name(["John"], "Smith")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+# Test Case 10: last_name is a list
+>>> say_my_name("John", ["Smith"])
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+# Test Case 11: Empty string for first_name
+>>> say_my_name("", "Smith")
+My name is  Smith
+
+# Test Case 12: Empty strings for both
+>>> say_my_name("", "")
+My name is  
+
+# Test Case 13: Long names
+>>> say_my_name("Christopher", "Montgomery")
+My name is Christopher Montgomery
+
+# Test Case 14: Names with spaces
+>>> say_my_name("Jean Paul", "Sartre")
+My name is Jean Paul Sartre
+
+# Test Case 15: first_name is a float
+>>> say_my_name(3.14, "Pi")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+# Test Case 16: last_name is a float
+>>> say_my_name("Pi", 3.14)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+# Test Case 17: first_name is a boolean
+>>> say_my_name(True, "Bool")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+# Test Case 18: Missing both arguments
+>>> say_my_name()
+Traceback (most recent call last):
+...
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+# Test Case 19: Names with special characters
+>>> say_my_name("José", "García")
+My name is José García
+
+# Test Case 20: Single character names
+>>> say_my_name("A", "B")
+My name is A B
