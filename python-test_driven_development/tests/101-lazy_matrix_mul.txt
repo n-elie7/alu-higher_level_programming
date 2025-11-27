@@ -82,13 +82,13 @@ TypeError: invalid data type for einsum
 >>> lazy_matrix_mul([[1, 2], [3, 4, 5]], [[1, 2], [3, 4]])
 Traceback (most recent call last):
 ...
-ValueError: setting an array element with a sequence...
+ValueError: setting an array element with a sequence.
 
 # Test Case 15: m_b rows are not the same size
 >>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4, 5]])
 Traceback (most recent call last):
 ...
-ValueError: setting an array element with a sequence...
+ValueError: setting an array element with a sequence.
 
 # Test Case 16: m_a and m_b can't be multiplied (incompatible dimensions)
 >>> lazy_matrix_mul([[1, 2, 3]], [[4, 5], [6, 7]])
