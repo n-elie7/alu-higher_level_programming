@@ -20,7 +20,7 @@ if __name__ == "__main__":
     # SAFE query using parameterized execution
     query = """SELECT *
     FROM states
-    WHERE name = '{}'
+    WHERE BINARY name = '{}'
     ORDER BY id ASC""".format(state_name)
     cursor.execute(
         query
