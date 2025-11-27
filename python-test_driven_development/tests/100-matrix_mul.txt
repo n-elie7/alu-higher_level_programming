@@ -96,7 +96,7 @@ ValueError: m_a and m_b can't be multiplied
 
 # Test Case 17: Matrix with floats
 >>> matrix_mul([[1.5, 2.5], [3.5, 4.5]], [[1.0, 2.0], [3.0, 4.0]])
-[[9.0, 13.0], [17.0, 23.0]]
+[[9.0, 13.0], [17.0, 25.0]]
 
 # Test Case 18: Single element matrices
 >>> matrix_mul([[5]], [[3]])
