@@ -5,7 +5,7 @@ from the database hbtn_0e_6_usa.
 """
 
 import sys
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
@@ -26,9 +26,9 @@ if __name__ == "__main__":
 
     # Use ilike for case-insensitive search
     states = session.query(State).filter(
-        State.name.like('%a%')).all()
-    for state in states:
-        session.delete(state)
+        func.lower(State.name).like('%a%')
+    ).delete(synchronize_session=False)
+    
     session.commit()
 
     session.close()
