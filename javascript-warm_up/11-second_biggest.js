@@ -2,6 +2,13 @@
 
 const args = process.argv.slice(2);
 
-const sortedArray = args.sort((a, b) => b - a);
+function secondBiggest (args) {
+  if (args.length === 0 || parseInt(args[0]) === 1) {
+    return 0;
+  }
+  const sortedArray = args.sort((a, b) => b - a);
 
-console.log(sortedArray[1]);
+  return sortedArray[1];
+}
+
+console.log(secondBiggest(args));
