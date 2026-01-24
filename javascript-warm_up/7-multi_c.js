@@ -3,7 +3,7 @@ const args = process.argv.slice(2);
 
 const occurences = parseInt(args[0]);
 
-if (args.length) {
+if (args === undefined) {
     console.log('Missing number of occurrences');
 }
 
