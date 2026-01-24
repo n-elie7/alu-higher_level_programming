@@ -3,7 +3,7 @@
 const args = process.argv.slice(2);
 
 function secondBiggest (args) {
-  if (args.length === 0 || parseInt(args[0]) === 1) {
+  if (args.length === 0 || args[0] == 1) {
     return 0;
   }
   const sortedArray = args.sort((a, b) => b - a);
