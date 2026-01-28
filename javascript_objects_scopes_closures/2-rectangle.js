@@ -8,7 +8,7 @@ class Rectangle {
       w <= 0 ||
       h <= 0
     ) {
-      return {};
+      return;
     }
 
     this.width = w;
