@@ -29,20 +29,18 @@ class Rectangle {
     let a = this.height;
     let b = this.width;
 
-    let temp = a;
+    const temp = a;
 
     a = b;
     b = temp;
 
     this.height = a;
     this.width = b;
-    return;
   }
 
   double () {
     this.height *= 2;
     this.width *= 2;
-    return;
   }
 }
 
