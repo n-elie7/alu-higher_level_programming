@@ -20,14 +20,30 @@ function print_details(emna) {
     for (const [key, value] of Object.entries(emna)) {
         console.log(`${key}: ${value}`);
     }
-
-    // console.log(`Name: ${harambe1.name}`);
-    // console.log(`Age: ${harambe1.age}`);
-    // console.log(`Sex: ${harambe1.sex}`);
-    // console.log(`Leg Count: ${harambe1.leg_count}`);
-    // console.log(`Nutrition: ${harambe1.nutrition}`);
-    // console.log(`Habitat: ${harambe1.habitat}`);
-    // console.log(harambe1.eat("bananas"));
 }
 
-print_details(harambe1);
+// print_details(harambe1);
+
+class Human extends Animal {
+    constructor(leg_count, nutrition, habitat, age, name, sex, nationality, faith, address) {
+        super(leg_count, nutrition, habitat, age, name, sex);
+        this.nationality = nationality,
+        this.faith = faith,
+        this.address = address
+    }
+
+    speak() {
+        return `This Human is speaking.`;
+    }
+}
+
+const human = new Human(2, "omnivore", "urban", 30, "John Doe", "male", "Rwandan", "Christian", {city: "Kigali", country: "Rwanda"});
+
+process.stdin.resume();
+
+console.log(human.speak());
+
+process.on('SIGINT', () => {
+  process.exit(0);
+});
+

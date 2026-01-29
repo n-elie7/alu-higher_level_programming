@@ -12,5 +12,4 @@ class SquareChar extends Square {
   }
 }
 
-
 module.exports = SquareChar;
