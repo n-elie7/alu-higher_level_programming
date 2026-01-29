@@ -12,9 +12,5 @@ class SquareChar extends Square {
   }
 }
 
-const s1 = new SquareChar(4);
-s1.charPrint();
-
-s1.charPrint('C');
 
 module.exports = SquareChar;
