@@ -1,0 +1,3182 @@
+<html lang="en"><head><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid {
+        padding-top: 56.25%
+      }
+    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="google" content="notranslate">
+
+      <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-2EQRR6HMDB&amp;cx=c&amp;gtm=4e61r1"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-N4C8MF2"></script><script>
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({"userId":6995,"visitorType":"student","batch":{"id":416,"fullNameWithC":"ALU-0925","schoolLocation":{"id":70,"name":"ALU"}},"curriculum":{"id":199,"name":"Front-End Web Development"}});
+
+    window.gtm_user_custom_event = function (name, options) {
+      if (typeof name === 'undefined') {
+        return;
+      }
+
+      window.dataLayer.push({
+        customEventOptions: typeof options !== 'undefined' ? options : {},
+        event: name,
+      });
+    }
+  </script>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-N4C8MF2');</script>
+  <!-- End Google Tag Manager -->
+
+
+    <title>Project: JavaScript - Objects, Scopes and Closures | ALU Intranet</title>
+
+      <link rel="stylesheet" href="https://use.typekit.net/xgz4ilr.css">
+      <link rel="stylesheet" href="/assets/application_alu-6bd95ac6e1eaa16c2ceee03a7e96e9db6c2d4c330c517a4d063a0d8c47ac92f1.css" media="all">
+      <script src="https://www.gstatic.com/charts/loader.js"></script>
+      <link rel="icon" type="image/x-icon" href="/favicon_alu.ico">
+      <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="jUSr6HGCWhFbH-NG2Sw7PdWETqznv4DwQuXVNqd9-ffQsFegsMadIdYJO_hAtbbLxiC9amcdRa42SpdQ6vcpPQ">
+
+      <link rel="apple-touch-icon" href="/apple-touch-icon_alu.png">
+
+      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+      <!-- Store user timezone -->
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          if (typeof Cookies !== 'undefined') {
+            Cookies.set('timezone', (new Date()).getTimezoneOffset() / -60.0);
+          }
+        });
+      </script>
+
+
+      <!-- React -->
+      <script src="/assets/app-2bab663b99510b5afc0dfab5605f74650dc8c48554c15c7c64578c6e19127db2.js" data-turbo-track="reload" defer="defer"></script>
+<script src="/assets/sprockets-e2981cb1a2a37caf945a0d7cb5c2b73abc305a425f129661db883c6cc06ed2a9.js" data-turbo-track="reload" defer="defer"></script>
+      <link rel="stylesheet" href="/assets/app-805bc85e1e1748cb12efd3dcccd4eb353776484f3821ad63f60005ef180fa3da.css" media="all">
+
+
+  </head>
+
+  <body class="signed_in env_production notranslate sidebar-collapsed" translate="no" data-theme-suffix="_alu" style="">
+      <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4C8MF2"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
+      <div data-react-class="header/Header" data-react-props="{&quot;themePrefix&quot;:&quot;_alu&quot;,&quot;csrfToken&quot;:&quot;ryllfamOpTYe05HlVNoY6gVZ_P4oDfE7N8uJq-E8VjDy3Zk1aMpiBpPFSVvNQ5UcFv0POKivNGVDZMvNrLaG-g&quot;,&quot;ehubHeaderSdkJsUrl&quot;:null,&quot;logoUrl&quot;:&quot;https://intranet.aluswe.com/assets/holberton-logo-full-alu-74201cf8fa31526e6edd1c69f40578ca36c4fff38fa15228a99d653bf7f6285d.png&quot;,&quot;logoutUrl&quot;:&quot;/auth/sign_out&quot;,&quot;logoClickUrl&quot;:&quot;/&quot;,&quot;redirectUrl&quot;:&quot;/auth/sign_in&quot;,&quot;user&quot;:{&quot;myProfileUrl&quot;:&quot;/users/my_profile&quot;,&quot;profilePictureUrl&quot;:&quot;https://intranet.aluswe.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VNIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a0eff3e756f1b41652b11308179f1b5ff7867103/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2hKeVpYTnBlbVZmZEc5ZlptbDBXd2RwQWNocEFjZz0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--382f1043032648fb998506131e6a3dd584036d92/WhatsApp%20Image%202025-05-25%20at%2007.48.40.jpeg&quot;},&quot;listItems&quot;:[{&quot;label&quot;:&quot;Projects&quot;,&quot;iconName&quot;:&quot;code-fork&quot;,&quot;targetUrl&quot;:&quot;/projects/current&quot;,&quot;id&quot;:&quot;sidebar-current-projects-item&quot;},{&quot;label&quot;:&quot;My resources&quot;},{&quot;label&quot;:&quot;My courses&quot;,&quot;iconName&quot;:&quot;graduation-cap&quot;,&quot;targetUrl&quot;:&quot;/dashboards/my_curriculums&quot;},{&quot;label&quot;:&quot;Concepts&quot;,&quot;iconName&quot;:&quot;file-text&quot;,&quot;targetUrl&quot;:&quot;/concepts&quot;,&quot;id&quot;:&quot;sidebar-concepts-item&quot;},{&quot;label&quot;:&quot;Conference rooms&quot;,&quot;iconName&quot;:&quot;comments&quot;,&quot;targetUrl&quot;:&quot;/dashboards/video_rooms&quot;,&quot;id&quot;:&quot;sidebar-dashboards-video-rooms&quot;},{&quot;label&quot;:&quot;Servers&quot;,&quot;iconName&quot;:&quot;server&quot;,&quot;targetUrl&quot;:&quot;/servers&quot;},{&quot;label&quot;:&quot;Sandboxes&quot;,&quot;iconName&quot;:&quot;terminal&quot;,&quot;targetUrl&quot;:&quot;/user_containers/current&quot;,&quot;id&quot;:&quot;sidebar-dashboards-my-containers&quot;}]}" data-react-cache-id="header/Header-0"><div class="header d-flex align-items-center bg-white border-bottom position-fixed top-0 w-100" style="background-color: white; border-color: rgb(229, 230, 230); z-index: 1000;"><div class="header-left align-items-center d-flex position-fixed px-2" style="z-index: 2;"><div class="hamburger mb-0 p-2 color-primary" style="cursor: pointer; font-size: 24px;"><i class="fa-solid fa-fas fa-bars"></i></div><a class="logo-container p-1" href="/" rel="noreferrer" target=""><div class="logo mx-auto" style="background-image: url(&quot;https://intranet.aluswe.com/assets/holberton-logo-full-alu-74201cf8fa31526e6edd1c69f40578ca36c4fff38fa15228a99d653bf7f6285d.png&quot;);"></div></a></div><div class="header-right d-flex align-items-center flex-grow-1 justify-content-center" style="z-index: 1;"></div></div><div class="sidebar navigation bg-white border-end position-fixed overflow-scroll bottom-0 start-0 " id="sidebar" style="background-color: white; border-color: rgb(238, 238, 238);"><ul class="px-2"><li><span><a href="/" rel="noreferrer" target="_self"><div class="icon "><i aria-hidden="true" class="fa-solid fa-home"></i></div><div class="ps-3 overflow-hidden text-nowrap" style="display: none;">Home</div></a></span></li><li id="sidebar-current-projects-item"><span><a href="/projects/current" rel="noreferrer" target="_self"><div class="icon "><i aria-hidden="true" class="fa-solid fa-code-fork"></i></div><div class="ps-3 overflow-hidden text-nowrap" style="display: none;">Projects</div></a></span></li><hr title="My resources"><li><span><a href="/dashboards/my_curriculums" rel="noreferrer" target="_self"><div class="icon "><i aria-hidden="true" class="fa-solid fa-graduation-cap"></i></div><div class="ps-3 overflow-hidden text-nowrap" style="display: none;">My courses</div></a></span></li><li id="sidebar-concepts-item"><span><a href="/concepts" rel="noreferrer" target="_self"><div class="icon "><i aria-hidden="true" class="fa-solid fa-file-text"></i></div><div class="ps-3 overflow-hidden text-nowrap" style="display: none;">Concepts</div></a></span></li><li id="sidebar-dashboards-video-rooms"><span><a href="/dashboards/video_rooms" rel="noreferrer" target="_self"><div class="icon "><i aria-hidden="true" class="fa-solid fa-comments"></i></div><div class="ps-3 overflow-hidden text-nowrap" style="display: none;">Conference rooms</div></a></span></li><li><span><a href="/servers" rel="noreferrer" target="_self"><div class="icon "><i aria-hidden="true" class="fa-solid fa-server"></i></div><div class="ps-3 overflow-hidden text-nowrap" style="display: none;">Servers</div></a></span></li><li id="sidebar-dashboards-my-containers"><span><a href="/user_containers/current" rel="noreferrer" target="_self"><div class="icon "><i aria-hidden="true" class="fa-solid fa-terminal"></i></div><div class="ps-3 overflow-hidden text-nowrap" style="display: none;">Sandboxes</div></a></span></li><li class="bg-white border-top border-end position-fixed p-2 bottom-0 start-0 mb-0" style="background-color: white; border-color: rgb(238, 238, 238);"><span><a href="/users/my_profile"><div class="image "><div class="inner" style="background-image: url(&quot;https://intranet.aluswe.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VNIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a0eff3e756f1b41652b11308179f1b5ff7867103/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2hKeVpYTnBlbVZmZEc5ZlptbDBXd2RwQWNocEFjZz0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--382f1043032648fb998506131e6a3dd584036d92/WhatsApp%20Image%202025-05-25%20at%2007.48.40.jpeg&quot;);"></div></div><div class="flex-grow-1 ps-3 overflow-hidden text-nowrap" style="display: none;">My Profile</div></a></span></li></ul></div></div>
+
+
+    <main class="content" id="content">
+        
+
+        <div id="layout-bars">
+          
+          <div class="px-5 py-3" id="student-switch-curriculum">
+  <div class="btn-group">
+    <div class="align-items-center d-flex gap-3" aria-expanded="false" data-bs-auto-close="outside" data-bs-toggle="dropdown" type="button">
+      <div class="d-flex flex-column" style="line-height: 16px">
+        <span class="fs-4 fw-semibold" style="font-size: 15px !important;">
+          Front-End Web Development
+        </span>
+        <span class="fs-sm text-muted">
+          Average: <span class="fw-medium">0.0%</span>
+        </span>
+      </div>
+
+      <div class="d-flex flex-column justify-content-center">
+        <span style="margin-bottom: -4px">
+          <i aria-hidden="true" class="fa-solid fa-angle-up fa-fw"></i>
+        </span>
+        <span style="margin-top: -4px">
+          <i aria-hidden="true" class="fa-solid fa-angle-down fa-fw"></i>
+        </span>
+      </div>
+</div>
+    <ul class="dropdown-menu-400 fs-5 dropdown-menu">
+        <li><a class="dropdown-item" href="/curriculums/198/observe">
+          <div class="align-items-center d-flex py-2">
+            <div class="d-flex flex-column" style="line-height: 16px">
+              <span class="fs-4 fw-medium" style="font-size: 15px !important;">
+                Introduction to Linux and IT Tools
+              </span>
+              <span class="text-muted" style="font-size: 14px !important;">
+                Average: <span class="fw-medium">0.0%</span>
+              </span>
+            </div>
+
+          </div>
+</a></li>        <li><a class="dropdown-item" href="/curriculums/199/observe">
+          <div class="align-items-center d-flex py-2">
+            <div class="d-flex flex-column" style="line-height: 16px">
+              <span class="fs-4 fw-medium" style="font-size: 15px !important;">
+                Front-End Web Development
+              </span>
+              <span class="text-muted" style="font-size: 14px !important;">
+                Average: <span class="fw-medium">0.0%</span>
+              </span>
+            </div>
+
+              <span class="fw-semibold text-info" style="margin-left: 42px">
+                <i aria-hidden="true" class="fa-solid fa-check"></i>
+              </span>
+          </div>
+</a></li>        <li><a class="dropdown-item" href="/curriculums/207/observe">
+          <div class="align-items-center d-flex py-2">
+            <div class="d-flex flex-column" style="line-height: 16px">
+              <span class="fs-4 fw-medium" style="font-size: 15px !important;">
+                Introduction to Programming and Databases
+              </span>
+              <span class="text-muted" style="font-size: 14px !important;">
+                Average: <span class="fw-medium">0.0%</span>
+              </span>
+            </div>
+
+          </div>
+</a></li>        <li><a class="dropdown-item" href="/curriculums/208/observe">
+          <div class="align-items-center d-flex py-2">
+            <div class="d-flex flex-column" style="line-height: 16px">
+              <span class="fs-4 fw-medium" style="font-size: 15px !important;">
+                Web Infrastructure
+              </span>
+              <span class="text-muted" style="font-size: 14px !important;">
+                Average: <span class="fw-medium">0.0%</span>
+              </span>
+            </div>
+
+          </div>
+</a></li></ul></div></div>
+
+          
+          
+        </div>
+
+      <article class="">
+
+        
+  <div class="d-flex flex-wrap">
+
+    <div class="flex-grow-1" id="curriculum_navigation_content">
+      
+<div class="project row">
+  <div class="col-12 col-xl-10 contains-images">
+    <div id="project_id" style="display: none" data-project-id="2133"></div>
+
+    <div class="vstack gap-3">
+        <div data-react-class="projects/ProjectHeader" data-react-props="{&quot;metadata&quot;:{&quot;author&quot;:&quot;Guillaume&quot;,&quot;weight&quot;:1,&quot;task_level_review_type&quot;:&quot;Your score will be updated as you progress.&quot;,&quot;correction&quot;:{&quot;released&quot;:true,&quot;requires_manual_correction&quot;:false},&quot;bpi&quot;:{&quot;current&quot;:true,&quot;started&quot;:false,&quot;in_second_deadline&quot;:false,&quot;starts_at&quot;:&quot;2026-01-17T00:00:00.000+02:00&quot;,&quot;ends_at&quot;:&quot;2026-01-30T23:58:59.999+02:00&quot;,&quot;second_deadline_at&quot;:&quot;2026-01-30T23:58:59.999+02:00&quot;}},&quot;project&quot;:{&quot;completion&quot;:36.36,&quot;id&quot;:2133,&quot;index&quot;:0,&quot;isAccessible&quot;:true,&quot;isOptional&quot;:false,&quot;imagePath&quot;:&quot;/assets/pathway/003_color-0c5b38973bfe29fff8dd86f65a213ea2d2499a7d0d9e4549f440c50dc84c9618.png&quot;,&quot;name&quot;:&quot;JavaScript - Objects, Scopes and Closures&quot;,&quot;score&quot;:{&quot;mandatory&quot;:51.72,&quot;optional&quot;:0.0},&quot;tasksCount&quot;:3},&quot;tags&quot;:[],&quot;videoRoomLink&quot;:null}" data-react-cache-id="projects/ProjectHeader-0"><div class="card card-tile project-header"><div class="card-body hstack"><div class="pathway" style="padding: 16px;"><div class="project-circle project-circle-on-tile" style="border-radius: 100%; height: 150px; margin: auto; padding: 5px; width: 150px;"><div data-test-id="CircularProgressbarWithChildren"><div style="position: relative; width: 100%; height: 100%;"><svg class="CircularProgressbar " viewBox="0 0 100 100" data-test-id="CircularProgressbar" style="height: 140px; vertical-align: middle; width: 140px;"><path class="CircularProgressbar-trail" d="
+      M 50,50
+      m 0,-48.5
+      a 48.5,48.5 0 1 1 0,97
+      a 48.5,48.5 0 1 1 0,-97
+    " stroke-width="3" fill-opacity="0" style="stroke-dasharray: 304.734px, 304.734px; stroke-dashoffset: 0px;"></path><path class="CircularProgressbar-path" d="
+      M 50,50
+      m 0,-48.5
+      a 48.5,48.5 0 1 1 0,97
+      a 48.5,48.5 0 1 1 0,-97
+    " stroke-width="3" fill-opacity="0" style="stroke-dasharray: 304.734px, 304.734px; stroke-dashoffset: 110.801px;"></path></svg><div data-test-id="CircularProgressbarWithChildren__children" style="position: absolute; width: 100%; height: 100%; margin-top: -100%; display: flex; flex-direction: column; justify-content: center; align-items: center;"><div style="height: 100%; position: absolute; transform: rotate(0turn);"><div class="circular-progress-bar-radial-separator" style="height: 4%; width: 8px;"></div></div><div style="height: 100%; position: absolute; transform: rotate(0.333333turn);"><div class="circular-progress-bar-radial-separator" style="height: 4%; width: 8px;"></div></div><div style="height: 100%; position: absolute; transform: rotate(0.666667turn);"><div class="circular-progress-bar-radial-separator" style="height: 4%; width: 8px;"></div></div><div class="position-relative"><span><div class="align-items-center d-flex justify-content-center project-circle-body active" style="border-radius: 100%; height: 124px; width: 124px;"><img alt="Project badge" src="/assets/pathway/003_color-0c5b38973bfe29fff8dd86f65a213ea2d2499a7d0d9e4549f440c50dc84c9618.png" width="60%"></div></span><div class="p-1 position-absolute project-circle-score text-center" style="border-radius: 10px; width: 125px;"><span><span class="d-block">73.28%</span></span></div></div></div></div></div></div></div><div class="project-info" style="flex-basis: 100%; margin: 16px;"><h1 style="margin: 0px;">JavaScript - Objects, Scopes and Closures</h1><ul class="list-group metadata fs-small" id="project-metadata"><li class="list-group-item"><i aria-hidden="true" class="fa-solid fa-user fa-fw"></i> By: Guillaume</li><li class="list-group-item"><i aria-hidden="true" class="fa-solid fa-gear fa-fw"></i> Weight: 1</li><li class="list-group-item"><i aria-hidden="true" class="fa-solid fa-square-check fa-fw"></i> Your score will be updated as you progress.</li><li class="list-group-item"><i aria-hidden="true" class="fa-solid fa-calendar fa-fw"></i> Project will start <span><span class="datetime">Jan 17, 2026 12:00 AM</span></span>, must end by <span><span class="datetime">Jan 30, 2026 11:58 PM</span></span></li></ul></div></div></div></div>
+
+
+
+
+        
+        
+        <div class="card mb-3">
+  <div class="card-body">
+    <h2>Resources</h2>
+
+<p><strong>Read or watch</strong>:</p>
+
+<ul>
+<li><a href="/rltoken/J3Z4yAus4UpxNtckHugmKQ" title="JavaScript object basics" target="_blank">JavaScript object basics</a> </li>
+<li><a href="/rltoken/Th0A8D0mEExeE9qo1XFFow" title="Object-oriented JavaScript" target="_blank">Object-oriented JavaScript</a> (<em><strong>read all examples!</strong></em>)</li>
+<li><a href="/rltoken/G8yKgqjqWfZJWscwR5qbhQ" title="Class - ES6" target="_blank">Class - ES6</a> </li>
+<li><a href="/rltoken/LRnD3AG8LhJ4GCBmc991fQ" title="super - ES6" target="_blank">super - ES6</a> </li>
+<li><a href="/rltoken/660gdP0wboDeNAIe1dVYCA" title="extends - ES6" target="_blank">extends - ES6</a> </li>
+<li><a href="/rltoken/MicixdZskH6uNySFX_n5jA" title="Object prototypes" target="_blank">Object prototypes</a> </li>
+<li><a href="/rltoken/Th0A8D0mEExeE9qo1XFFow" title="Inheritance in JavaScript" target="_blank">Inheritance in JavaScript</a> </li>
+<li><a href="/rltoken/9F52IiWw4FZ6PMGRrtgX2Q" title="Closures" target="_blank">Closures</a> </li>
+<li><a href="/rltoken/-Ayad9P8LI0ONRYw5VNWTA" title="this/self" target="_blank">this/self</a> </li>
+<li><a href="/rltoken/U2KLIkOd64LaBPslo1Yv5w" title="Modern JS" target="_blank">Modern JS</a> </li>
+</ul>
+
+<h2>Learning Objectives</h2>
+
+<p>At the end of this project, you are expected to be able to <a href="/rltoken/RpN83yGPM--4F7S33eWrsw" title="explain to anyone" target="_blank">explain to anyone</a>, <strong>without the help of Google</strong>:</p>
+
+<h3>General</h3>
+
+<ul>
+<li>Why JavaScript programming is amazing</li>
+<li>How to create an object in JavaScript</li>
+<li>What <code>this</code> means</li>
+<li>What <code>undefined</code> means </li>
+<li>Why the variable type and scope is important</li>
+<li>What is a closure</li>
+<li>What is a prototype</li>
+<li>How to inherit an object from another</li>
+</ul>
+
+<h2>Requirements</h2>
+
+<h3>General</h3>
+
+<ul>
+<li>Allowed editors: <code>vi</code>, <code>vim</code>, <code>emacs</code></li>
+<li>All your files will be interpreted on Ubuntu 20.04 LTS using node (version 14.x)</li>
+<li>All your files should end with a new line</li>
+<li>The first line of all your files should be exactly <code>#!/usr/bin/node</code></li>
+<li>A <code>README.md</code> file, at the root of the folder of the project, is mandatory</li>
+<li>Your code should be <code>semistandard</code> compliant. <a href="/rltoken/1DdOUTeOEk72X4cMU2xXiQ" title="Rules of Standard" target="_blank">Rules of Standard</a> + <a href="/rltoken/HByiNc1G6MENr-3jQ3Rhdg" title="semicolons on top" target="_blank">semicolons on top</a>. Also as reference: <a href="/rltoken/yx_erOi3O8OEOTmdQKVeIA" title="AirBnB style" target="_blank">AirBnB style</a></li>
+<li>All your files must be executable</li>
+<li>The length of your files will be tested using <code>wc</code></li>
+<li>You are not allowed to use <code>var</code></li>
+</ul>
+
+<h2>More Info</h2>
+
+<h3>Install Node 14</h3>
+
+<pre><code>$ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+$ sudo apt-get install -y nodejs
+</code></pre>
+
+<h3>Install semi-standard</h3>
+
+<p><a href="/rltoken/HByiNc1G6MENr-3jQ3Rhdg" title="Documentation" target="_blank">Documentation</a></p>
+
+<pre><code>$ sudo npm install semistandard --global
+</code></pre>
+
+</div></div>
+        
+          <div class="card" id="project-quiz-questions-title">
+    <h5 class="card-header">
+      Quiz questions
+</h5>
+    <div class="card-body">
+
+        <div class="alert alert-info">
+          <strong>Great!</strong>
+          You've completed the quiz successfully! Keep going!
+          <span id="quiz_questions_collapse_toggle">(Show quiz)</span>
+        </div>
+
+      <section class="quiz_questions_show_container" style="display: none;">
+        <div class="vstack gap-3">
+
+            <div class="quiz_question_item_container" data-role="quiz_question5550" data-position="4">
+              
+<div class="" id="quiz_question-5550">
+    <h5 class="card-title quiz_question">
+        
+        Question #0
+</h5>
+    <!-- Quiz question Body -->
+    <p>What is the output of this code?</p>
+
+<pre><code>const a = 12;
+
+function myFunction(a) {
+    console.log(a);
+}
+
+myFunction(89);
+</code></pre>
+
+
+    <!-- Quiz question Answers -->
+        <ul class="quiz_question_answers" data-question-id="5550">
+                <li class="">
+
+  <input type="radio" name="5550" id="5550-1505927487387" value="1505927487387" data-quiz-answer-id="1505927487387" data-quiz-question-id="5550" disabled="disabled" checked="checked">
+  <label for="5550-1505927487387"><p>89</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5550" id="5550-1505927482327" value="1505927482327" data-quiz-answer-id="1505927482327" data-quiz-question-id="5550" disabled="disabled">
+  <label for="5550-1505927482327"><p>12</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5550" id="5550-1505927479783" value="1505927479783" data-quiz-answer-id="1505927479783" data-quiz-question-id="5550" disabled="disabled">
+  <label for="5550-1505927479783"><p>1</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5550" id="5550-1505927484905" value="1505927484905" data-quiz-answer-id="1505927484905" data-quiz-question-id="5550" disabled="disabled">
+  <label for="5550-1505927484905"><p>2</p>
+</label>
+</li>
+
+        </ul>
+
+    <!-- Quiz question Tips -->
+</div>
+
+            </div>
+              <hr>
+
+            <div class="quiz_question_item_container" data-role="quiz_question5552" data-position="6">
+              
+<div class="" id="quiz_question-5552">
+    <h5 class="card-title quiz_question">
+        
+        Question #1
+</h5>
+    <!-- Quiz question Body -->
+    <p>What is the output of this code?</p>
+
+<pre><code>const b = 79;
+function myFunction(a) {
+    console.log(a + b);
+}
+
+myFunction(10);
+</code></pre>
+
+
+    <!-- Quiz question Answers -->
+        <ul class="quiz_question_answers" data-question-id="5552">
+                <li class="">
+
+  <input type="radio" name="5552" id="5552-1505927534893" value="1505927534893" data-quiz-answer-id="1505927534893" data-quiz-question-id="5552" disabled="disabled">
+  <label for="5552-1505927534893"><p>10</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5552" id="5552-1505927530414" value="1505927530414" data-quiz-answer-id="1505927530414" data-quiz-question-id="5552" disabled="disabled" checked="checked">
+  <label for="5552-1505927530414"><p>89</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5552" id="5552-1505927537018" value="1505927537018" data-quiz-answer-id="1505927537018" data-quiz-question-id="5552" disabled="disabled">
+  <label for="5552-1505927537018"><p>79</p>
+</label>
+</li>
+
+        </ul>
+
+    <!-- Quiz question Tips -->
+</div>
+
+            </div>
+              <hr>
+
+            <div class="quiz_question_item_container" data-role="quiz_question5547" data-position="1">
+              
+<div class="" id="quiz_question-5547">
+    <h5 class="card-title quiz_question">
+        
+        Question #2
+</h5>
+    <!-- Quiz question Body -->
+    <p>What is the output of this code?</p>
+
+<pre><code>function myFunction(a) {
+    console.log(a);
+}
+
+myFunction(12);
+</code></pre>
+
+
+    <!-- Quiz question Answers -->
+        <ul class="quiz_question_answers" data-question-id="5547">
+                <li class="">
+
+  <input type="radio" name="5547" id="5547-1505927421952" value="1505927421952" data-quiz-answer-id="1505927421952" data-quiz-question-id="5547" disabled="disabled" checked="checked">
+  <label for="5547-1505927421952"><p>12</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5547" id="5547-1505927419613" value="1505927419613" data-quiz-answer-id="1505927419613" data-quiz-question-id="5547" disabled="disabled">
+  <label for="5547-1505927419613"><p>1</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5547" id="5547-1505927424306" value="1505927424306" data-quiz-answer-id="1505927424306" data-quiz-question-id="5547" disabled="disabled">
+  <label for="5547-1505927424306"><p>2</p>
+</label>
+</li>
+
+        </ul>
+
+    <!-- Quiz question Tips -->
+</div>
+
+            </div>
+              <hr>
+
+            <div class="quiz_question_item_container" data-role="quiz_question5548" data-position="2">
+              
+<div class="" id="quiz_question-5548">
+    <h5 class="card-title quiz_question">
+        
+        Question #3
+</h5>
+    <!-- Quiz question Body -->
+    <p>What is the output of this code?</p>
+
+<pre><code>const number = 12;
+function myFunction(a) {
+    console.log(a);
+}
+
+myFunction(number);
+</code></pre>
+
+
+    <!-- Quiz question Answers -->
+        <ul class="quiz_question_answers" data-question-id="5548">
+                <li class="">
+
+  <input type="radio" name="5548" id="5548-1505927435721" value="1505927435721" data-quiz-answer-id="1505927435721" data-quiz-question-id="5548" disabled="disabled" checked="checked">
+  <label for="5548-1505927435721"><p>12</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5548" id="5548-1505927432972" value="1505927432972" data-quiz-answer-id="1505927432972" data-quiz-question-id="5548" disabled="disabled">
+  <label for="5548-1505927432972"><p>1</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5548" id="5548-1505927437613" value="1505927437613" data-quiz-answer-id="1505927437613" data-quiz-question-id="5548" disabled="disabled">
+  <label for="5548-1505927437613"><p>2</p>
+</label>
+</li>
+
+        </ul>
+
+    <!-- Quiz question Tips -->
+</div>
+
+            </div>
+              <hr>
+
+            <div class="quiz_question_item_container" data-role="quiz_question5553" data-position="7">
+              
+<div class="" id="quiz_question-5553">
+    <h5 class="card-title quiz_question">
+        
+        Question #4
+</h5>
+    <!-- Quiz question Body -->
+    <p>What is the output of this code?</p>
+
+<pre><code>function myFunction(a) {
+    console.log(a + b);
+}
+
+const b = 79;
+myFunction(10);
+</code></pre>
+
+
+    <!-- Quiz question Answers -->
+        <ul class="quiz_question_answers" data-question-id="5553">
+                <li class="">
+
+  <input type="radio" name="5553" id="5553-1505927556273" value="1505927556273" data-quiz-answer-id="1505927556273" data-quiz-question-id="5553" disabled="disabled">
+  <label for="5553-1505927556273"><p>79</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5553" id="5553-1505927553680" value="1505927553680" data-quiz-answer-id="1505927553680" data-quiz-question-id="5553" disabled="disabled">
+  <label for="5553-1505927553680"><p>10</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5553" id="5553-1505927558997" value="1505927558997" data-quiz-answer-id="1505927558997" data-quiz-question-id="5553" disabled="disabled" checked="checked">
+  <label for="5553-1505927558997"><p>89</p>
+</label>
+</li>
+
+        </ul>
+
+    <!-- Quiz question Tips -->
+</div>
+
+            </div>
+              <hr>
+
+            <div class="quiz_question_item_container" data-role="quiz_question5551" data-position="5">
+              
+<div class="" id="quiz_question-5551">
+    <h5 class="card-title quiz_question">
+        
+        Question #5
+</h5>
+    <!-- Quiz question Body -->
+    <p>What is the output of this code?</p>
+
+<pre><code>function myFunction(a) {
+    console.log(a);
+}
+
+const a = 12;
+myFunction(89);
+</code></pre>
+
+
+    <!-- Quiz question Answers -->
+        <ul class="quiz_question_answers" data-question-id="5551">
+                <li class="">
+
+  <input type="radio" name="5551" id="5551-1505927511018" value="1505927511018" data-quiz-answer-id="1505927511018" data-quiz-question-id="5551" disabled="disabled" checked="checked">
+  <label for="5551-1505927511018"><p>89</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5551" id="5551-1505927507337" value="1505927507337" data-quiz-answer-id="1505927507337" data-quiz-question-id="5551" disabled="disabled">
+  <label for="5551-1505927507337"><p>12</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5551" id="5551-1505927505165" value="1505927505165" data-quiz-answer-id="1505927505165" data-quiz-question-id="5551" disabled="disabled">
+  <label for="5551-1505927505165"><p>1</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5551" id="5551-1505927509190" value="1505927509190" data-quiz-answer-id="1505927509190" data-quiz-question-id="5551" disabled="disabled">
+  <label for="5551-1505927509190"><p>2</p>
+</label>
+</li>
+
+        </ul>
+
+    <!-- Quiz question Tips -->
+</div>
+
+            </div>
+              <hr>
+
+            <div class="quiz_question_item_container" data-role="quiz_question5554" data-position="8">
+              
+<div class="" id="quiz_question-5554">
+    <h5 class="card-title quiz_question">
+        
+        Question #6
+</h5>
+    <!-- Quiz question Body -->
+    <p>What is the output of this code?</p>
+
+<pre><code>let b = 1;
+
+function myFunction(a) {
+    console.log(a + b);
+    b = a;
+}
+
+myFunction(3);
+myFunction(4);
+</code></pre>
+
+
+    <!-- Quiz question Answers -->
+        <ul class="quiz_question_answers" data-question-id="5554">
+                <li class="">
+
+  <input type="radio" name="5554" id="5554-1505927752081" value="1505927752081" data-quiz-answer-id="1505927752081" data-quiz-question-id="5554" disabled="disabled">
+  <label for="5554-1505927752081"><p>4, 3</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5554" id="5554-1505927668083" value="1505927668083" data-quiz-answer-id="1505927668083" data-quiz-question-id="5554" disabled="disabled" checked="checked">
+  <label for="5554-1505927668083"><p>4, 7</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5554" id="5554-1505927665585" value="1505927665585" data-quiz-answer-id="1505927665585" data-quiz-question-id="5554" disabled="disabled">
+  <label for="5554-1505927665585"><p>3, 4</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5554" id="5554-1505927670275" value="1505927670275" data-quiz-answer-id="1505927670275" data-quiz-question-id="5554" disabled="disabled">
+  <label for="5554-1505927670275"><p>3, 7</p>
+</label>
+</li>
+
+        </ul>
+
+    <!-- Quiz question Tips -->
+</div>
+
+            </div>
+              <hr>
+
+            <div class="quiz_question_item_container" data-role="quiz_question5549" data-position="3">
+              
+<div class="" id="quiz_question-5549">
+    <h5 class="card-title quiz_question">
+        
+        Question #7
+</h5>
+    <!-- Quiz question Body -->
+    <p>What is the output of this code?</p>
+
+<pre><code>function myFunction(a) {
+    console.log(a);
+}
+
+const number = 12;
+myFunction(number);
+</code></pre>
+
+
+    <!-- Quiz question Answers -->
+        <ul class="quiz_question_answers" data-question-id="5549">
+                <li class="">
+
+  <input type="radio" name="5549" id="5549-1505927446938" value="1505927446938" data-quiz-answer-id="1505927446938" data-quiz-question-id="5549" disabled="disabled" checked="checked">
+  <label for="5549-1505927446938"><p>12</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5549" id="5549-1505927445303" value="1505927445303" data-quiz-answer-id="1505927445303" data-quiz-question-id="5549" disabled="disabled">
+  <label for="5549-1505927445303"><p>1</p>
+</label>
+</li>
+
+                <li class="">
+
+  <input type="radio" name="5549" id="5549-1505927450027" value="1505927450027" data-quiz-answer-id="1505927450027" data-quiz-question-id="5549" disabled="disabled">
+  <label for="5549-1505927450027"><p>2</p>
+</label>
+</li>
+
+        </ul>
+
+    <!-- Quiz question Tips -->
+</div>
+
+            </div>
+        </div>
+
+      </section>
+</div></div>
+
+          
+            <h2 class="mt-5">Tasks</h2>
+
+  <div class="vstack gap-5">
+      <div data-role="task19605" data-position="1" id="task-num-0">
+        <div>
+  <span id="user_id" data-id="6995"></span>
+
+  <div class="card task-card" id="task-19605">
+    <h5 class="card-header hstack gap-2 justify-content-between"><span>0. Rectangle #0</span>
+      <div class="hstack gap-1">
+          <span class="badge text-bg-info">
+            mandatory
+</span>      </div>
+</h5>
+    <div class="card-body">
+      <!-- Progress vs Score -->
+
+      <!-- Task Body -->
+      <p>Write an empty class <code>Rectangle</code> that defines a rectangle:</p>
+
+<ul>
+<li>You must use the <code>class</code> notation for defining your class </li>
+</ul>
+
+<pre><code>guillaume@ubuntu:~/$ cat 0-main.js
+#!/usr/bin/node
+const Rectangle = require('./0-rectangle');
+
+const r1 = new Rectangle();
+console.log(r1);
+console.log(r1.constructor);
+
+guillaume@ubuntu:~/$ ./0-main.js
+Rectangle {}
+[Class: Rectangle]
+guillaume@ubuntu:~/$ 
+</code></pre>
+
+</div>
+    <div class="list-group list-group-flush">
+
+      <!-- Task Files -->
+
+      <!-- Task URLs -->
+
+      <!-- Github information -->
+        <div class="list-group-item">
+          <p><strong>Repo:</strong></p>
+          <ul>
+            <li>GitHub repository: <code>alu-higher_level_programming</code></li>
+              <li>Directory: <code>javascript_objects_scopes_closures</code></li>
+              <li>File: <code>0-rectangle.js</code></li>
+          </ul>
+        </div>
+
+      <!-- Self-paced manual review -->
+    </div>
+
+    <!-- Footer - Controls -->
+    
+  <div class="card-footer">
+    <div class="align-items-center d-flex justify-content-between">
+      <div>
+            
+<button data-bs-target="#task-test-correction-19605-correction-modal" data-bs-toggle="modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19605}" data-gtm-custom-event-name="task_checker_modal" data-task-id="19605" type="button" class="btn btn-default btn-sm check-your-task-19605-modal-button" id="task-num-0-check-code-btn">Review your work</button>
+
+
+          <button class="btn btn-default btn-sm" data-bs-target="#container-specs-modal" data-bs-toggle="modal" data-gtm-custom-event-name="task_sandbox_modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19605}"><i aria-hidden="true" class="fa-solid fa-terminal"></i><span>Get a sandbox</span></button>
+
+      </div>
+
+      <div>
+            <strong class="text-success">
+                <span id="task-19605-score-info-score">7</span>/7
+            </strong>
+            <span class="text-muted">pts</span>
+</div>
+
+    </div>
+</div>
+    
+    
+</div></div>
+
+      </div>
+      <div data-role="task19606" data-position="2" id="task-num-1">
+        <div>
+  <span id="user_id" data-id="6995"></span>
+
+  <div class="card task-card" id="task-19606">
+    <h5 class="card-header hstack gap-2 justify-content-between"><span>1. Rectangle #1</span>
+      <div class="hstack gap-1">
+          <span class="badge text-bg-info">
+            mandatory
+</span>      </div>
+</h5>
+    <div class="card-body">
+      <!-- Progress vs Score -->
+
+      <!-- Task Body -->
+      <p>Write a class <code>Rectangle</code> that defines a rectangle:</p>
+
+<ul>
+<li>You must use the <code>class</code> notation for defining your class</li>
+<li>The constructor must take 2 arguments <code>w</code> and <code>h</code></li>
+<li>Initialize the instance attribute <code>width</code> with the value of <code>w</code> </li>
+<li>Initialize the instance attribute <code>height</code> with the value of <code>h</code> </li>
+</ul>
+
+<pre><code>guillaume@ubuntu:~/$ cat 1-main.js
+#!/usr/bin/node
+const Rectangle = require('./1-rectangle');
+
+const r1 = new Rectangle(2, 3);
+console.log(r1);
+console.log(r1.width);
+console.log(r1.height);
+
+const r2 = new Rectangle(2, -3);
+console.log(r2);
+console.log(r2.width);
+console.log(r2.height);
+
+const r3 = new Rectangle(2);
+console.log(r3);
+console.log(r3.width);
+console.log(r3.height);
+
+guillaume@ubuntu:~/$ ./1-main.js
+Rectangle { width: 2, height: 3 }
+2
+3
+Rectangle { width: 2, height: -3 }
+2
+-3
+Rectangle { width: 2, height: undefined }
+2
+undefined
+guillaume@ubuntu:~/$ 
+</code></pre>
+
+</div>
+    <div class="list-group list-group-flush">
+
+      <!-- Task Files -->
+
+      <!-- Task URLs -->
+
+      <!-- Github information -->
+        <div class="list-group-item">
+          <p><strong>Repo:</strong></p>
+          <ul>
+            <li>GitHub repository: <code>alu-higher_level_programming</code></li>
+              <li>Directory: <code>javascript_objects_scopes_closures</code></li>
+              <li>File: <code>1-rectangle.js</code></li>
+          </ul>
+        </div>
+
+      <!-- Self-paced manual review -->
+    </div>
+
+    <!-- Footer - Controls -->
+    
+  <div class="card-footer">
+    <div class="align-items-center d-flex justify-content-between">
+      <div>
+            
+<button data-bs-target="#task-test-correction-19606-correction-modal" data-bs-toggle="modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19606}" data-gtm-custom-event-name="task_checker_modal" data-task-id="19606" type="button" class="btn btn-default btn-sm check-your-task-19606-modal-button" id="task-num-1-check-code-btn">Review your work</button>
+
+
+          <button class="btn btn-default btn-sm" data-bs-target="#container-specs-modal" data-bs-toggle="modal" data-gtm-custom-event-name="task_sandbox_modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19606}"><i aria-hidden="true" class="fa-solid fa-terminal"></i><span>Get a sandbox</span></button>
+
+      </div>
+
+      <div>
+            <strong class="text-success">
+                <span id="task-19606-score-info-score">11</span>/11
+            </strong>
+            <span class="text-muted">pts</span>
+</div>
+
+    </div>
+</div>
+    
+    
+</div></div>
+
+      </div>
+      <div data-role="task19607" data-position="3" id="task-num-2">
+        <div>
+  <span id="user_id" data-id="6995"></span>
+
+  <div class="card task-card" id="task-19607">
+    <h5 class="card-header hstack gap-2 justify-content-between"><span>2. Rectangle #2</span>
+      <div class="hstack gap-1">
+          <span class="badge text-bg-info">
+            mandatory
+</span>      </div>
+</h5>
+    <div class="card-body">
+      <!-- Progress vs Score -->
+
+      <!-- Task Body -->
+      <p>Write a class <code>Rectangle</code> that defines a rectangle:</p>
+
+<ul>
+<li>You must use the <code>class</code> notation for defining your class</li>
+<li>The constructor must take 2 arguments <code>w</code> and <code>h</code></li>
+<li>Initialize the instance attribute <code>width</code> with the value of <code>w</code> </li>
+<li>Initialize the instance attribute <code>height</code> with the value of <code>h</code> </li>
+<li>If <code>w</code> or <code>h</code> is equal to 0 or not a positive integer, create an empty object</li>
+</ul>
+
+<pre><code>guillaume@ubuntu:~/$ cat 2-main.js
+#!/usr/bin/node
+const Rectangle = require('./2-rectangle');
+
+const r1 = new Rectangle(2, 3);
+console.log(r1);
+console.log(r1.width);
+console.log(r1.height);
+
+const r2 = new Rectangle(2, -3);
+console.log(r2);
+console.log(r2.width);
+console.log(r2.height);
+
+const r3 = new Rectangle(2);
+console.log(r3);
+console.log(r3.width);
+console.log(r3.height);
+
+const r4 = new Rectangle(2, 0);
+console.log(r4);
+console.log(r4.width);
+console.log(r4.height);
+
+guillaume@ubuntu:~/$ ./2-main.js
+Rectangle { width: 2, height: 3 }
+2
+3
+Rectangle {}
+undefined
+undefined
+Rectangle {}
+undefined
+undefined
+Rectangle {}
+undefined
+undefined
+guillaume@ubuntu:~/$ 
+</code></pre>
+
+</div>
+    <div class="list-group list-group-flush">
+
+      <!-- Task Files -->
+
+      <!-- Task URLs -->
+
+      <!-- Github information -->
+        <div class="list-group-item">
+          <p><strong>Repo:</strong></p>
+          <ul>
+            <li>GitHub repository: <code>alu-higher_level_programming</code></li>
+              <li>Directory: <code>javascript_objects_scopes_closures</code></li>
+              <li>File: <code>2-rectangle.js</code></li>
+          </ul>
+        </div>
+
+      <!-- Self-paced manual review -->
+    </div>
+
+    <!-- Footer - Controls -->
+    
+  <div class="card-footer">
+    <div class="align-items-center d-flex justify-content-between">
+      <div>
+            
+<button data-bs-target="#task-test-correction-19607-correction-modal" data-bs-toggle="modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19607}" data-gtm-custom-event-name="task_checker_modal" data-task-id="19607" type="button" class="btn btn-default btn-sm check-your-task-19607-modal-button" id="task-num-2-check-code-btn">Review your work</button>
+
+
+          <button class="btn btn-default btn-sm" data-bs-target="#container-specs-modal" data-bs-toggle="modal" data-gtm-custom-event-name="task_sandbox_modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19607}"><i aria-hidden="true" class="fa-solid fa-terminal"></i><span>Get a sandbox</span></button>
+
+      </div>
+
+      <div>
+            <strong class="text-primary">
+                <span id="task-19607-score-info-score">10</span>/11
+            </strong>
+            <span class="text-muted">pts</span>
+</div>
+
+    </div>
+</div>
+    
+    
+</div></div>
+
+      </div>
+      <div data-role="task19608" data-position="4" id="task-num-3">
+        <div>
+  <span id="user_id" data-id="6995"></span>
+
+  <div class="card task-card" id="task-19608">
+    <h5 class="card-header hstack gap-2 justify-content-between"><span>3. Rectangle #3</span>
+      <div class="hstack gap-1">
+          <span class="badge text-bg-info">
+            mandatory
+</span>      </div>
+</h5>
+    <div class="card-body">
+      <!-- Progress vs Score -->
+
+      <!-- Task Body -->
+      <p>Write a class <code>Rectangle</code> that defines a rectangle:</p>
+
+<ul>
+<li>You must use the <code>class</code> notation for defining your class</li>
+<li>The constructor must take 2 arguments: <code>w</code> and <code>h</code></li>
+<li>Initialize the instance attribute <code>width</code> with the value of <code>w</code> </li>
+<li>Initialize the instance attribute <code>height</code> with the value of <code>h</code> </li>
+<li>If <code>w</code> or <code>h</code> is equal to 0 or not a positive integer, create an empty object</li>
+<li>Create an instance method called <code>print()</code> that prints the rectangle using the character <code>X</code></li>
+</ul>
+
+<pre><code>guillaume@ubuntu:~/$ cat 3-main.js
+#!/usr/bin/node
+const Rectangle = require('./3-rectangle');
+
+const r1 = new Rectangle(2, 3);
+r1.print();
+
+const r2 = new Rectangle(10, 5);
+r2.print();
+
+guillaume@ubuntu:~/$ ./3-main.js
+XX
+XX
+XX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+guillaume@ubuntu:~/$ 
+</code></pre>
+
+</div>
+    <div class="list-group list-group-flush">
+
+      <!-- Task Files -->
+
+      <!-- Task URLs -->
+
+      <!-- Github information -->
+        <div class="list-group-item">
+          <p><strong>Repo:</strong></p>
+          <ul>
+            <li>GitHub repository: <code>alu-higher_level_programming</code></li>
+              <li>Directory: <code>javascript_objects_scopes_closures</code></li>
+              <li>File: <code>3-rectangle.js</code></li>
+          </ul>
+        </div>
+
+      <!-- Self-paced manual review -->
+    </div>
+
+    <!-- Footer - Controls -->
+    
+  <div class="card-footer">
+    <div class="align-items-center d-flex justify-content-between">
+      <div>
+            
+<button data-bs-target="#task-test-correction-19608-correction-modal" data-bs-toggle="modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19608}" data-gtm-custom-event-name="task_checker_modal" data-task-id="19608" type="button" class="btn btn-default btn-sm check-your-task-19608-modal-button" id="task-num-3-check-code-btn">Review your work</button>
+
+
+          <button class="btn btn-default btn-sm" data-bs-target="#container-specs-modal" data-bs-toggle="modal" data-gtm-custom-event-name="task_sandbox_modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19608}"><i aria-hidden="true" class="fa-solid fa-terminal"></i><span>Get a sandbox</span></button>
+
+      </div>
+
+      <div>
+            <strong class="text-success">
+                <span id="task-19608-score-info-score">11</span>/11
+            </strong>
+            <span class="text-muted">pts</span>
+</div>
+
+    </div>
+</div>
+    
+    
+</div></div>
+
+      </div>
+      <div data-role="task19609" data-position="5" id="task-num-4">
+        <div>
+  <span id="user_id" data-id="6995"></span>
+
+  <div class="card task-card" id="task-19609">
+    <h5 class="card-header hstack gap-2 justify-content-between"><span>4. Rectangle #4</span>
+      <div class="hstack gap-1">
+          <span class="badge text-bg-info">
+            mandatory
+</span>      </div>
+</h5>
+    <div class="card-body">
+      <!-- Progress vs Score -->
+
+      <!-- Task Body -->
+      <p>Write a class <code>Rectangle</code> that defines a rectangle:</p>
+
+<ul>
+<li>You must use the <code>class</code> notation for defining your class</li>
+<li>The constructor must take 2 arguments: <code>w</code> and <code>h</code></li>
+<li>Initialize the instance attribute <code>width</code> with the value of <code>w</code> </li>
+<li>Initialize the instance attribute <code>height</code> with the value of <code>h</code> </li>
+<li>If <code>w</code> or <code>h</code> is equal to 0 or not a positive integer, create an empty object</li>
+<li>Create an instance method called <code>print()</code> that prints the rectangle using the character <code>X</code></li>
+<li>Create an instance method called <code>rotate()</code> that exchanges the <code>width</code> and the <code>height</code> of the rectangle</li>
+<li>Create an instance method called <code>double()</code> that multiples the <code>width</code> and the <code>height</code> of the rectangle by 2</li>
+</ul>
+
+<pre><code>guillaume@ubuntu:~/$ cat 4-main.js
+#!/usr/bin/node
+const Rectangle = require('./4-rectangle');
+
+const r1 = new Rectangle(2, 3);
+console.log('Normal:');
+r1.print();
+
+console.log('Double:');
+r1.double();
+r1.print();
+
+console.log('Rotate:');
+r1.rotate();
+r1.print();
+
+guillaume@ubuntu:~/$ ./4-main.js
+Normal:
+XX
+XX
+XX
+Double:
+XXXX
+XXXX
+XXXX
+XXXX
+XXXX
+XXXX
+Rotate:
+XXXXXX
+XXXXXX
+XXXXXX
+XXXXXX
+guillaume@ubuntu:~/$ 
+</code></pre>
+
+</div>
+    <div class="list-group list-group-flush">
+
+      <!-- Task Files -->
+
+      <!-- Task URLs -->
+
+      <!-- Github information -->
+        <div class="list-group-item">
+          <p><strong>Repo:</strong></p>
+          <ul>
+            <li>GitHub repository: <code>alu-higher_level_programming</code></li>
+              <li>Directory: <code>javascript_objects_scopes_closures</code></li>
+              <li>File: <code>4-rectangle.js</code></li>
+          </ul>
+        </div>
+
+      <!-- Self-paced manual review -->
+    </div>
+
+    <!-- Footer - Controls -->
+    
+  <div class="card-footer">
+    <div class="align-items-center d-flex justify-content-between">
+      <div>
+            
+<button data-bs-target="#task-test-correction-19609-correction-modal" data-bs-toggle="modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19609}" data-gtm-custom-event-name="task_checker_modal" data-task-id="19609" type="button" class="btn btn-default btn-sm check-your-task-19609-modal-button" id="task-num-4-check-code-btn">Review your work</button>
+
+
+          <button class="btn btn-default btn-sm" data-bs-target="#container-specs-modal" data-bs-toggle="modal" data-gtm-custom-event-name="task_sandbox_modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19609}"><i aria-hidden="true" class="fa-solid fa-terminal"></i><span>Get a sandbox</span></button>
+
+      </div>
+
+      <div>
+            <strong class="text-success">
+                <span id="task-19609-score-info-score">11</span>/11
+            </strong>
+            <span class="text-muted">pts</span>
+</div>
+
+    </div>
+</div>
+    
+    
+</div></div>
+
+      </div>
+      <div data-role="task19610" data-position="6" id="task-num-5">
+        <div>
+  <span id="user_id" data-id="6995"></span>
+
+  <div class="card task-card" id="task-19610">
+    <h5 class="card-header hstack gap-2 justify-content-between"><span>5. Square #0</span>
+      <div class="hstack gap-1">
+          <span class="badge text-bg-info">
+            mandatory
+</span>      </div>
+</h5>
+    <div class="card-body">
+      <!-- Progress vs Score -->
+
+      <!-- Task Body -->
+      <p>Write a class <code>Square</code> that defines a square and inherits from <code>Rectangle</code> of <code>4-rectangle.js</code>:</p>
+
+<ul>
+<li>You must use the <code>class</code> notation for defining your class and <code>extends</code></li>
+<li>The constructor must take 1 argument: <code>size</code></li>
+<li>The constructor of <code>Rectangle</code> must be called (by using <code>super()</code>)</li>
+</ul>
+
+<pre><code>guillaume@ubuntu:~/$ cat 5-main.js
+#!/usr/bin/node
+const Square = require('./5-square');
+
+const s1 = new Square(4);
+s1.print();
+s1.double();
+s1.print();
+
+guillaume@ubuntu:~/$ ./5-main.js
+XXXX
+XXXX
+XXXX
+XXXX
+XXXXXXXX
+XXXXXXXX
+XXXXXXXX
+XXXXXXXX
+XXXXXXXX
+XXXXXXXX
+XXXXXXXX
+XXXXXXXX
+guillaume@ubuntu:~/$ 
+</code></pre>
+
+</div>
+    <div class="list-group list-group-flush">
+
+      <!-- Task Files -->
+
+      <!-- Task URLs -->
+
+      <!-- Github information -->
+        <div class="list-group-item">
+          <p><strong>Repo:</strong></p>
+          <ul>
+            <li>GitHub repository: <code>alu-higher_level_programming</code></li>
+              <li>Directory: <code>javascript_objects_scopes_closures</code></li>
+              <li>File: <code>5-square.js</code></li>
+          </ul>
+        </div>
+
+      <!-- Self-paced manual review -->
+    </div>
+
+    <!-- Footer - Controls -->
+    
+  <div class="card-footer">
+    <div class="align-items-center d-flex justify-content-between">
+      <div>
+            
+<button data-bs-target="#task-test-correction-19610-correction-modal" data-bs-toggle="modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19610}" data-gtm-custom-event-name="task_checker_modal" data-task-id="19610" type="button" class="btn btn-default btn-sm check-your-task-19610-modal-button" id="task-num-5-check-code-btn">Review your work</button>
+
+
+          <button class="btn btn-default btn-sm" data-bs-target="#container-specs-modal" data-bs-toggle="modal" data-gtm-custom-event-name="task_sandbox_modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19610}"><i aria-hidden="true" class="fa-solid fa-terminal"></i><span>Get a sandbox</span></button>
+
+      </div>
+
+      <div>
+            <strong class="text-success">
+                <span id="task-19610-score-info-score">11</span>/11
+            </strong>
+            <span class="text-muted">pts</span>
+</div>
+
+    </div>
+</div>
+    
+    
+</div></div>
+
+      </div>
+      <div data-role="task19611" data-position="7" id="task-num-6">
+        <div>
+  <span id="user_id" data-id="6995"></span>
+
+  <div class="card task-card" id="task-19611">
+    <h5 class="card-header hstack gap-2 justify-content-between"><span>6. Square #1</span>
+      <div class="hstack gap-1">
+          <span class="badge text-bg-info">
+            mandatory
+</span>      </div>
+</h5>
+    <div class="card-body">
+      <!-- Progress vs Score -->
+
+      <!-- Task Body -->
+      <p>Write a class <code>Square</code> that defines a square and inherits from <code>Square</code> of <code>5-square.js</code>:</p>
+
+<ul>
+<li>You must use the <code>class</code> notation for defining your class and <code>extends</code></li>
+<li>Create an instance method called <code>charPrint(c)</code> that prints the rectangle using the character <code>c</code>
+
+<ul>
+<li>If <code>c</code> is <code>undefined</code>, use the character <code>X</code></li>
+</ul></li>
+</ul>
+
+<pre><code>guillaume@ubuntu:~/$ cat 6-main.js
+#!/usr/bin/node
+const Square = require('./6-square');
+
+const s1 = new Square(4);
+s1.charPrint();
+
+s1.charPrint('C');
+
+guillaume@ubuntu:~/$ ./6-main.js
+XXXX
+XXXX
+XXXX
+XXXX
+CCCC
+CCCC
+CCCC
+CCCC
+guillaume@ubuntu:~/$ 
+</code></pre>
+
+</div>
+    <div class="list-group list-group-flush">
+
+      <!-- Task Files -->
+
+      <!-- Task URLs -->
+
+      <!-- Github information -->
+        <div class="list-group-item">
+          <p><strong>Repo:</strong></p>
+          <ul>
+            <li>GitHub repository: <code>alu-higher_level_programming</code></li>
+              <li>Directory: <code>javascript_objects_scopes_closures</code></li>
+              <li>File: <code>6-square.js</code></li>
+          </ul>
+        </div>
+
+      <!-- Self-paced manual review -->
+    </div>
+
+    <!-- Footer - Controls -->
+    
+  <div class="card-footer">
+    <div class="align-items-center d-flex justify-content-between">
+      <div>
+            
+<button data-bs-target="#task-test-correction-19611-correction-modal" data-bs-toggle="modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19611}" data-gtm-custom-event-name="task_checker_modal" data-task-id="19611" type="button" class="btn btn-default btn-sm check-your-task-19611-modal-button" id="task-num-6-check-code-btn">Review your work</button>
+
+
+          <button class="btn btn-default btn-sm" data-bs-target="#container-specs-modal" data-bs-toggle="modal" data-gtm-custom-event-name="task_sandbox_modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19611}"><i aria-hidden="true" class="fa-solid fa-terminal"></i><span>Get a sandbox</span></button>
+
+      </div>
+
+      <div>
+            <strong class="text-success">
+                <span id="task-19611-score-info-score">11</span>/11
+            </strong>
+            <span class="text-muted">pts</span>
+</div>
+
+    </div>
+</div>
+    
+    
+</div></div>
+
+      </div>
+      <div data-role="task19615" data-position="8" id="task-num-7">
+        <div>
+  <span id="user_id" data-id="6995"></span>
+
+  <div class="card task-card" id="task-19615">
+    <h5 class="card-header hstack gap-2 justify-content-between"><span>7. Occurrences</span>
+      <div class="hstack gap-1">
+          <span class="badge text-bg-info">
+            mandatory
+</span>      </div>
+</h5>
+    <div class="card-body">
+      <!-- Progress vs Score -->
+
+      <!-- Task Body -->
+      <p>Write a function that returns the number of occurrences in a list:</p>
+
+<ul>
+<li>Prototype: <code>exports.nbOccurences = function (list, searchElement)</code></li>
+</ul>
+
+<pre><code>guillaume@ubuntu:~/$ cat 7-main.js
+#!/usr/bin/node
+const nbOccurences = require('./7-occurrences').nbOccurences;
+
+console.log(nbOccurences([1, 2, 3, 4, 5, 6], 3));
+console.log(nbOccurences([3, 2, 3, 4, 5, 3, 3], 3));
+console.log(nbOccurences(["S", 12, "c", "S", "School", 8], "S"));
+
+guillaume@ubuntu:~/$ ./7-main.js
+1
+4
+2
+guillaume@ubuntu:~/$ 
+</code></pre>
+
+</div>
+    <div class="list-group list-group-flush">
+
+      <!-- Task Files -->
+
+      <!-- Task URLs -->
+
+      <!-- Github information -->
+        <div class="list-group-item">
+          <p><strong>Repo:</strong></p>
+          <ul>
+            <li>GitHub repository: <code>alu-higher_level_programming</code></li>
+              <li>Directory: <code>javascript_objects_scopes_closures</code></li>
+              <li>File: <code>7-occurrences.js</code></li>
+          </ul>
+        </div>
+
+      <!-- Self-paced manual review -->
+    </div>
+
+    <!-- Footer - Controls -->
+    
+  <div class="card-footer">
+    <div class="align-items-center d-flex justify-content-between">
+      <div>
+            
+<button data-bs-target="#task-test-correction-19615-correction-modal" data-bs-toggle="modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19615}" data-gtm-custom-event-name="task_checker_modal" data-task-id="19615" type="button" class="btn btn-default btn-sm check-your-task-19615-modal-button" id="task-num-7-check-code-btn">Review your work</button>
+
+
+          <button class="btn btn-default btn-sm" data-bs-target="#container-specs-modal" data-bs-toggle="modal" data-gtm-custom-event-name="task_sandbox_modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19615}"><i aria-hidden="true" class="fa-solid fa-terminal"></i><span>Get a sandbox</span></button>
+
+      </div>
+
+      <div>
+            <strong class="text-success">
+                <span id="task-19615-score-info-score">13</span>/13
+            </strong>
+            <span class="text-muted">pts</span>
+</div>
+
+    </div>
+</div>
+    
+    
+</div></div>
+
+      </div>
+      <div data-role="task19616" data-position="9" id="task-num-8">
+        <div>
+  <span id="user_id" data-id="6995"></span>
+
+  <div class="card task-card" id="task-19616">
+    <h5 class="card-header hstack gap-2 justify-content-between"><span>8. Esrever</span>
+      <div class="hstack gap-1">
+          <span class="badge text-bg-info">
+            mandatory
+</span>      </div>
+</h5>
+    <div class="card-body">
+      <!-- Progress vs Score -->
+
+      <!-- Task Body -->
+      <p>Write a function that returns the reversed version of a list:</p>
+
+<ul>
+<li>Prototype: <code>exports.esrever = function (list)</code></li>
+<li>You are not allow to use the built-in method <code>reverse</code></li>
+</ul>
+
+<pre><code>guillaume@ubuntu:~/$ cat 8-main.js
+#!/usr/bin/node
+const esrever = require('./8-esrever').esrever;
+
+console.log(esrever([1, 2, 3, 4, 5]));
+console.log(esrever(["School", 89, { id: 12 }, "String"]));
+
+guillaume@ubuntu:~/$ ./8-main.js
+[ 5, 4, 3, 2, 1 ]
+[ 'String', { id: 12 }, 89, 'School' ]
+guillaume@ubuntu:~/$ 
+</code></pre>
+
+</div>
+    <div class="list-group list-group-flush">
+
+      <!-- Task Files -->
+
+      <!-- Task URLs -->
+
+      <!-- Github information -->
+        <div class="list-group-item">
+          <p><strong>Repo:</strong></p>
+          <ul>
+            <li>GitHub repository: <code>alu-higher_level_programming</code></li>
+              <li>Directory: <code>javascript_objects_scopes_closures</code></li>
+              <li>File: <code>8-esrever.js</code></li>
+          </ul>
+        </div>
+
+      <!-- Self-paced manual review -->
+    </div>
+
+    <!-- Footer - Controls -->
+    
+  <div class="card-footer">
+    <div class="align-items-center d-flex justify-content-between">
+      <div>
+            
+<button data-bs-target="#task-test-correction-19616-correction-modal" data-bs-toggle="modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19616}" data-gtm-custom-event-name="task_checker_modal" data-task-id="19616" type="button" class="btn btn-default btn-sm check-your-task-19616-modal-button" id="task-num-8-check-code-btn">Review your work</button>
+
+
+          <button class="btn btn-default btn-sm" data-bs-target="#container-specs-modal" data-bs-toggle="modal" data-gtm-custom-event-name="task_sandbox_modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19616}"><i aria-hidden="true" class="fa-solid fa-terminal"></i><span>Get a sandbox</span></button>
+
+      </div>
+
+      <div>
+            <strong class="text-primary">
+                <span id="task-19616-score-info-score">0</span>/10
+            </strong>
+            <span class="text-muted">pts</span>
+</div>
+
+    </div>
+</div>
+    
+    
+</div></div>
+
+      </div>
+      <div data-role="task19617" data-position="10" id="task-num-9">
+        <div>
+  <span id="user_id" data-id="6995"></span>
+
+  <div class="card task-card" id="task-19617">
+    <h5 class="card-header hstack gap-2 justify-content-between"><span>9. Log me</span>
+      <div class="hstack gap-1">
+          <span class="badge text-bg-info">
+            mandatory
+</span>      </div>
+</h5>
+    <div class="card-body">
+      <!-- Progress vs Score -->
+
+      <!-- Task Body -->
+      <p>Write a function that prints the number of arguments already printed and the new argument value. (see example below)</p>
+
+<ul>
+<li>Prototype: <code>exports.logMe = function (item)</code></li>
+<li>Output format: <code>&lt;number arguments already printed&gt;: &lt;current argument value&gt;</code></li>
+</ul>
+
+<pre><code>guillaume@ubuntu:~/$ cat 9-main.js
+#!/usr/bin/node
+const logMe = require('./9-logme').logMe;
+
+logMe("Hello");
+logMe("Best");
+logMe("School");
+
+guillaume@ubuntu:~/$ ./9-main.js
+0: Hello
+1: Best
+2: School
+guillaume@ubuntu:~/$ 
+</code></pre>
+
+</div>
+    <div class="list-group list-group-flush">
+
+      <!-- Task Files -->
+
+      <!-- Task URLs -->
+
+      <!-- Github information -->
+        <div class="list-group-item">
+          <p><strong>Repo:</strong></p>
+          <ul>
+            <li>GitHub repository: <code>alu-higher_level_programming</code></li>
+              <li>Directory: <code>javascript_objects_scopes_closures</code></li>
+              <li>File: <code>9-logme.js</code></li>
+          </ul>
+        </div>
+
+      <!-- Self-paced manual review -->
+    </div>
+
+    <!-- Footer - Controls -->
+    
+  <div class="card-footer">
+    <div class="align-items-center d-flex justify-content-between">
+      <div>
+            
+<button data-bs-target="#task-test-correction-19617-correction-modal" data-bs-toggle="modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19617}" data-gtm-custom-event-name="task_checker_modal" data-task-id="19617" type="button" class="btn btn-default btn-sm check-your-task-19617-modal-button" id="task-num-9-check-code-btn">Review your work</button>
+
+
+          <button class="btn btn-default btn-sm" data-bs-target="#container-specs-modal" data-bs-toggle="modal" data-gtm-custom-event-name="task_sandbox_modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19617}"><i aria-hidden="true" class="fa-solid fa-terminal"></i><span>Get a sandbox</span></button>
+
+      </div>
+
+      <div>
+            <strong class="text-primary">
+                <span id="task-19617-score-info-score">0</span>/10
+            </strong>
+            <span class="text-muted">pts</span>
+</div>
+
+    </div>
+</div>
+    
+    
+</div></div>
+
+      </div>
+      <div data-role="task19618" data-position="11" id="task-num-10">
+        <div>
+  <span id="user_id" data-id="6995"></span>
+
+  <div class="card task-card" id="task-19618">
+    <h5 class="card-header hstack gap-2 justify-content-between"><span>10. Number conversion</span>
+      <div class="hstack gap-1">
+          <span class="badge text-bg-info">
+            mandatory
+</span>      </div>
+</h5>
+    <div class="card-body">
+      <!-- Progress vs Score -->
+
+      <!-- Task Body -->
+      <p>Write a function that converts a number from base 10 to another base passed as argument:</p>
+
+<ul>
+<li>Prototype: <code>exports.converter = function (base)</code></li>
+<li>You are not allowed to import any file</li>
+<li>You are not allowed to declare any new variable (<code>var</code>, <code>let</code>, etc..)</li>
+</ul>
+
+<pre><code>guillaume@ubuntu:~/$ cat 10-main.js
+#!/usr/bin/node
+const converter = require('./10-converter').converter;
+
+let myConverter = converter(10);
+
+console.log(myConverter(2));
+console.log(myConverter(12));
+console.log(myConverter(89));
+
+
+myConverter = converter(16);
+
+console.log(myConverter(2));
+console.log(myConverter(12));
+console.log(myConverter(89));
+
+guillaume@ubuntu:~/$ ./10-main.js
+2
+12
+89
+2
+c
+59
+guillaume@ubuntu:~/$ 
+</code></pre>
+
+</div>
+    <div class="list-group list-group-flush">
+
+      <!-- Task Files -->
+
+      <!-- Task URLs -->
+
+      <!-- Github information -->
+        <div class="list-group-item">
+          <p><strong>Repo:</strong></p>
+          <ul>
+            <li>GitHub repository: <code>alu-higher_level_programming</code></li>
+              <li>Directory: <code>javascript_objects_scopes_closures</code></li>
+              <li>File: <code>10-converter.js</code></li>
+          </ul>
+        </div>
+
+      <!-- Self-paced manual review -->
+    </div>
+
+    <!-- Footer - Controls -->
+    
+  <div class="card-footer">
+    <div class="align-items-center d-flex justify-content-between">
+      <div>
+            
+<button data-bs-target="#task-test-correction-19618-correction-modal" data-bs-toggle="modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19618}" data-gtm-custom-event-name="task_checker_modal" data-task-id="19618" type="button" class="btn btn-default btn-sm check-your-task-19618-modal-button" id="task-num-10-check-code-btn">Review your work</button>
+
+
+          <button class="btn btn-default btn-sm" data-bs-target="#container-specs-modal" data-bs-toggle="modal" data-gtm-custom-event-name="task_sandbox_modal" data-gtm-custom-event-options="{&quot;taskId&quot;:19618}"><i aria-hidden="true" class="fa-solid fa-terminal"></i><span>Get a sandbox</span></button>
+
+      </div>
+
+      <div>
+            <strong class="text-primary">
+                <span id="task-19618-score-info-score">0</span>/10
+            </strong>
+            <span class="text-muted">pts</span>
+</div>
+
+    </div>
+</div>
+    
+    
+</div></div>
+
+      </div>
+  </div>
+
+    <form class="d-grid mt-5" method="post" action="/projects/2133/unlock_optionals"><button class="btn btn-primary" data-confirm="Are you sure? Make sure you focused on the mandatory tasks first" data-disable-with="Unlocking 3 advanced tasks..." data-gtm-custom-event-name="project_unlock_advanced_tasks" id="unlock_optional_btn" type="submit">Done with the mandatory tasks? Unlock 3 advanced tasks now!</button><input type="hidden" name="authenticity_token" value="jUSr6HGCWhFbH-NG2Sw7PdWETqznv4DwQuXVNqd9-ffQsFegsMadIdYJO_hAtbbLxiC9amcdRa42SpdQ6vcpPQ" autocomplete="off"></form>
+
+
+              <div class="gap">
+  <div data-react-class="projects/ProjectReview" data-react-props="{&quot;correction&quot;:{&quot;statusURI&quot;:&quot;/corrections/482949/status_self_paced.json&quot;,&quot;startReviewURI&quot;:&quot;/corrections/482949/start_auto_review_self_paced.json&quot;},&quot;csrfToken&quot;:&quot;wqPBdsypbzeHpqyAiBGNqD5PZuhVX53w23fFi5TxylWfVz0-De2oBwqwdD4RiABeLeuVLtX9WK6v2Ift2Xsanw&quot;,&quot;nextProject&quot;:{&quot;details&quot;:{&quot;curriculum_completed&quot;:false,&quot;message&quot;:&quot;The next project will be available on Saturday, Jan 31st.&quot;,&quot;uri&quot;:null},&quot;fetchURI&quot;:&quot;/projects/2133/next&quot;},&quot;pollingInterval&quot;:10000,&quot;progress&quot;:{&quot;auto_review&quot;:{&quot;can_execute&quot;:true,&quot;completion&quot;:{&quot;count&quot;:6,&quot;is_completed&quot;:true,&quot;percentage&quot;:100.0},&quot;inability_to_execute_reason&quot;:null},&quot;tasks&quot;:[{&quot;id&quot;:19605,&quot;progress_score&quot;:{&quot;progress&quot;:1.0,&quot;score&quot;:1.0},&quot;score_info&quot;:{&quot;passed&quot;:true,&quot;points&quot;:7,&quot;score&quot;:7.0}},{&quot;id&quot;:19606,&quot;progress_score&quot;:{&quot;progress&quot;:1.0,&quot;score&quot;:1.0},&quot;score_info&quot;:{&quot;passed&quot;:true,&quot;points&quot;:11,&quot;score&quot;:11.0}},{&quot;id&quot;:19607,&quot;progress_score&quot;:{&quot;progress&quot;:0.9090909090909091,&quot;score&quot;:0.9090909090909091},&quot;score_info&quot;:{&quot;passed&quot;:false,&quot;points&quot;:11,&quot;score&quot;:10.0}},{&quot;id&quot;:19608,&quot;progress_score&quot;:{&quot;progress&quot;:1.0,&quot;score&quot;:1.0},&quot;score_info&quot;:{&quot;passed&quot;:true,&quot;points&quot;:11,&quot;score&quot;:11.0}},{&quot;id&quot;:19609,&quot;progress_score&quot;:{&quot;progress&quot;:1.0,&quot;score&quot;:1.0},&quot;score_info&quot;:{&quot;passed&quot;:true,&quot;points&quot;:11,&quot;score&quot;:11.0}},{&quot;id&quot;:19610,&quot;progress_score&quot;:{&quot;progress&quot;:0.9090909090909091,&quot;score&quot;:0.9090909090909091},&quot;score_info&quot;:{&quot;passed&quot;:false,&quot;points&quot;:11,&quot;score&quot;:10.0}},{&quot;id&quot;:19611,&quot;progress_score&quot;:{&quot;progress&quot;:0.0,&quot;score&quot;:0.0},&quot;score_info&quot;:{&quot;passed&quot;:false,&quot;points&quot;:11,&quot;score&quot;:0}},{&quot;id&quot;:19615,&quot;progress_score&quot;:{&quot;progress&quot;:0.0,&quot;score&quot;:0.0},&quot;score_info&quot;:{&quot;passed&quot;:false,&quot;points&quot;:13,&quot;score&quot;:0}},{&quot;id&quot;:19616,&quot;progress_score&quot;:{&quot;progress&quot;:0.0,&quot;score&quot;:0.0},&quot;score_info&quot;:{&quot;passed&quot;:false,&quot;points&quot;:10,&quot;score&quot;:0}},{&quot;id&quot;:19617,&quot;progress_score&quot;:{&quot;progress&quot;:0.0,&quot;score&quot;:0.0},&quot;score_info&quot;:{&quot;passed&quot;:false,&quot;points&quot;:10,&quot;score&quot;:0}},{&quot;id&quot;:19618,&quot;progress_score&quot;:{&quot;progress&quot;:0.0,&quot;score&quot;:0.0},&quot;score_info&quot;:{&quot;passed&quot;:false,&quot;points&quot;:10,&quot;score&quot;:0}}],&quot;summary&quot;:{&quot;completion&quot;:36.36,&quot;score&quot;:{&quot;mandatory&quot;:51.72,&quot;optional&quot;:0.0}},&quot;can_skip&quot;:true,&quot;can_start_peer_review&quot;:false},&quot;peerReview&quot;:null,&quot;project&quot;:{&quot;completion&quot;:36.36,&quot;id&quot;:2133,&quot;index&quot;:0,&quot;isAccessible&quot;:true,&quot;isOptional&quot;:false,&quot;imagePath&quot;:&quot;/assets/pathway/003_color-0c5b38973bfe29fff8dd86f65a213ea2d2499a7d0d9e4549f440c50dc84c9618.png&quot;,&quot;name&quot;:&quot;JavaScript - Objects, Scopes and Closures&quot;,&quot;score&quot;:{&quot;mandatory&quot;:51.72,&quot;optional&quot;:0.0},&quot;tasksCount&quot;:3},&quot;scoresFrozenReason&quot;:null,&quot;skipURI&quot;:&quot;/corrections/482949/skip&quot;,&quot;taskLevelReviewTypeHumanized&quot;:&quot;Your score will be updated as you progress.&quot;}" data-react-cache-id="projects/ProjectReview-0"><div class="card"><h5 class="card-header">Score</h5><div class="card-body"><div class="align-items-center d-flex gap-5"><div class="pathway" style="padding: 10px 30px 40px;"><div class="project-circle " style="border-radius: 100%; box-shadow: rgb(229, 230, 230) 10px 20px 10px; height: 125px; margin: auto; padding: 5px; width: 125px;"><div data-test-id="CircularProgressbarWithChildren"><div style="position: relative; width: 100%; height: 100%;"><svg class="CircularProgressbar " viewBox="0 0 100 100" data-test-id="CircularProgressbar" style="height: 115px; vertical-align: middle; width: 115px;"><path class="CircularProgressbar-trail" d="
+      M 50,50
+      m 0,-48.5
+      a 48.5,48.5 0 1 1 0,97
+      a 48.5,48.5 0 1 1 0,-97
+    " stroke-width="3" fill-opacity="0" style="stroke-dasharray: 304.734px, 304.734px; stroke-dashoffset: 0px;"></path><path class="CircularProgressbar-path" d="
+      M 50,50
+      m 0,-48.5
+      a 48.5,48.5 0 1 1 0,97
+      a 48.5,48.5 0 1 1 0,-97
+    " stroke-width="3" fill-opacity="0" style="stroke-dasharray: 304.734px, 304.734px; stroke-dashoffset: 110.801px;"></path></svg><div data-test-id="CircularProgressbarWithChildren__children" style="position: absolute; width: 100%; height: 100%; margin-top: -100%; display: flex; flex-direction: column; justify-content: center; align-items: center;"><div style="height: 100%; position: absolute; transform: rotate(0turn);"><div class="circular-progress-bar-radial-separator" style="height: 4%; width: 8px;"></div></div><div style="height: 100%; position: absolute; transform: rotate(0.333333turn);"><div class="circular-progress-bar-radial-separator" style="height: 4%; width: 8px;"></div></div><div style="height: 100%; position: absolute; transform: rotate(0.666667turn);"><div class="circular-progress-bar-radial-separator" style="height: 4%; width: 8px;"></div></div><div class="position-relative"><span><div class="align-items-center d-flex justify-content-center project-circle-body active" style="border-radius: 100%; height: 100px; width: 100px;"><img alt="Project badge" src="/assets/pathway/003_color-0c5b38973bfe29fff8dd86f65a213ea2d2499a7d0d9e4549f440c50dc84c9618.png" width="60%"></div></span><div class="p-1 position-absolute project-circle-score text-center" style="border-radius: 10px; width: 100px;"><span><span class="d-block">73.28%</span></span></div></div></div></div></div></div></div><div style="flex-basis: 100%;"><p class="mb-2 text-primary"><span>Still some tasks to work on!</span></p><p>Please review <strong>all the tasks</strong> before you start the peer review.</p><div class="d-flex flex-wrap gap-3 justify-content-between mt-4"><div class="btn-group"><button class="btn btn-primary" id="project-launch-review-btn"><i aria-hidden="true" class="fa-solid fa-paper-plane me-1"></i><span>Review all the tasks</span></button></div><div><form action="/corrections/482949/skip" method="post"><input name="authenticity_token" type="hidden" value="wqPBdsypbzeHpqyAiBGNqD5PZuhVX53w23fFi5TxylWfVz0-De2oBwqwdD4RiABeLeuVLtX9WK6v2Ift2Xsanw"><button class="btn btn-default" type="submit"><i aria-hidden="true" class="fa-solid fa-forward me-1"></i><span>Skip this project</span></button></form></div></div></div></div></div></div></div>
+</div>
+
+
+            
+
+          <div>
+            <a data-bs-container="body" data-bs-html="false" data-bs-placement="auto" data-bs-title="JavaScript - Warm up" data-bs-toggle="tooltip" href="/projects/2132">Previous project</a>
+          </div>
+    </div>
+  </div>
+</div>
+
+
+      
+    </div>
+  </div>
+
+
+      </article>
+
+        <div class="copyright">Copyright © 2026 ALU, All rights reserved.</div>
+
+    </main>
+
+
+
+        
+
+  
+
+<div aria-hidden="true" aria-labelledby="task-test-correction-19605-correction-modal-label" class="modal modal-lg fade student_modal task_correction_modal text-start checker_in_beta" id="task-test-correction-19605-correction-modal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5" id="task-test-correction-19605-correction-modal-label">0. Rectangle #0</h1><button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button></div><div class="modal-body">    <div class="actions">
+      <center>
+        <div class="alert alert-info d-none"></div>
+
+        <button name="button" type="submit" class="btn btn-primary correction_request_test_send" data-task-id="19605" data-last-request-id="9557181">Request a new review</button>
+        <button class="btn btn-secondary close-modal d-none" data-bs-dismiss="modal" type="button">Close</button>
+
+        <div class="spinner" style="display: none;">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+        <div class="error fw-semibold m-3 text-danger"></div>
+        <div class="info fw-semibold m-3"></div>
+      </center>
+    </div>
+    <div class="result"></div>
+
+    <div class="help">
+  <button data-task-id="19605">
+    <i aria-hidden="true" class="fa-solid fa-circle-info"></i>
+  </button>
+  <div class="help-container" data-task-id="19605">
+    <div class="check-line">
+      <div class="check-inline requirement success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Requirement success</span>
+      </div>
+      <div class="check-inline requirement fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Requirement fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline code success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Code success</span>
+      </div>
+      <div class="check-inline code fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Code fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline efficiency success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Efficiency success</span>
+      </div>
+      <div class="check-inline efficiency fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Efficiency fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline answer success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Text answer success</span>
+      </div>
+      <div class="check-inline answer fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Text answer fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline requirement fail offline">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Skipped - Previous check failed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div></div></div><div aria-hidden="true" aria-labelledby="task-test-correction-19606-correction-modal-label" class="modal modal-lg fade student_modal task_correction_modal text-start checker_in_beta" id="task-test-correction-19606-correction-modal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5" id="task-test-correction-19606-correction-modal-label">1. Rectangle #1</h1><button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button></div><div class="modal-body">    <div class="actions">
+      <center>
+        <div class="alert alert-info d-none"></div>
+
+        <button name="button" type="submit" class="btn btn-primary correction_request_test_send" data-task-id="19606" data-last-request-id="9562863">Request a new review</button>
+        <button class="btn btn-secondary close-modal d-none" data-bs-dismiss="modal" type="button">Close</button>
+
+        <div class="spinner" style="display: none;">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+        <div class="error fw-semibold m-3 text-danger"></div>
+        <div class="info fw-semibold m-3"></div>
+      </center>
+    </div>
+    <div class="result"></div>
+
+    <div class="help">
+  <button data-task-id="19606">
+    <i aria-hidden="true" class="fa-solid fa-circle-info"></i>
+  </button>
+  <div class="help-container" data-task-id="19606">
+    <div class="check-line">
+      <div class="check-inline requirement success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Requirement success</span>
+      </div>
+      <div class="check-inline requirement fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Requirement fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline code success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Code success</span>
+      </div>
+      <div class="check-inline code fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Code fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline efficiency success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Efficiency success</span>
+      </div>
+      <div class="check-inline efficiency fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Efficiency fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline answer success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Text answer success</span>
+      </div>
+      <div class="check-inline answer fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Text answer fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline requirement fail offline">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Skipped - Previous check failed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div></div></div><div aria-hidden="true" aria-labelledby="task-test-correction-19607-correction-modal-label" class="modal modal-lg fade student_modal task_correction_modal text-start checker_in_beta" id="task-test-correction-19607-correction-modal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5" id="task-test-correction-19607-correction-modal-label">2. Rectangle #2</h1><button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button></div><div class="modal-body">    <div class="actions">
+      <center>
+        <div class="alert alert-info d-none"></div>
+
+        <button name="button" type="submit" class="btn btn-primary correction_request_test_send" data-task-id="19607" data-last-request-id="9562914">Request a new review</button>
+        <button class="btn btn-secondary close-modal d-none" data-bs-dismiss="modal" type="button">Close</button>
+
+        <div class="spinner" style="display: none;">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+        <div class="error fw-semibold m-3 text-danger"></div>
+        <div class="info fw-semibold m-3"></div>
+      </center>
+    </div>
+    <div class="result"></div>
+
+    <div class="help">
+  <button data-task-id="19607">
+    <i aria-hidden="true" class="fa-solid fa-circle-info"></i>
+  </button>
+  <div class="help-container" data-task-id="19607">
+    <div class="check-line">
+      <div class="check-inline requirement success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Requirement success</span>
+      </div>
+      <div class="check-inline requirement fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Requirement fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline code success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Code success</span>
+      </div>
+      <div class="check-inline code fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Code fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline efficiency success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Efficiency success</span>
+      </div>
+      <div class="check-inline efficiency fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Efficiency fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline answer success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Text answer success</span>
+      </div>
+      <div class="check-inline answer fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Text answer fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline requirement fail offline">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Skipped - Previous check failed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div></div></div><div aria-hidden="true" aria-labelledby="task-test-correction-19608-correction-modal-label" class="modal modal-lg fade student_modal task_correction_modal text-start checker_in_beta" id="task-test-correction-19608-correction-modal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5" id="task-test-correction-19608-correction-modal-label">3. Rectangle #3</h1><button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button></div><div class="modal-body">    <div class="actions">
+      <center>
+        <div class="alert alert-info d-none"></div>
+
+        <button name="button" type="submit" class="btn btn-primary correction_request_test_send" data-task-id="19608" data-last-request-id="9562868">Request a new review</button>
+        <button class="btn btn-secondary close-modal d-none" data-bs-dismiss="modal" type="button">Close</button>
+
+        <div class="spinner" style="display: none;">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+        <div class="error fw-semibold m-3 text-danger"></div>
+        <div class="info fw-semibold m-3"></div>
+      </center>
+    </div>
+    <div class="result"></div>
+
+    <div class="help">
+  <button data-task-id="19608">
+    <i aria-hidden="true" class="fa-solid fa-circle-info"></i>
+  </button>
+  <div class="help-container" data-task-id="19608">
+    <div class="check-line">
+      <div class="check-inline requirement success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Requirement success</span>
+      </div>
+      <div class="check-inline requirement fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Requirement fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline code success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Code success</span>
+      </div>
+      <div class="check-inline code fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Code fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline efficiency success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Efficiency success</span>
+      </div>
+      <div class="check-inline efficiency fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Efficiency fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline answer success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Text answer success</span>
+      </div>
+      <div class="check-inline answer fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Text answer fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline requirement fail offline">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Skipped - Previous check failed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div></div></div><div aria-hidden="true" aria-labelledby="task-test-correction-19609-correction-modal-label" class="modal modal-lg fade student_modal task_correction_modal text-start checker_in_beta" id="task-test-correction-19609-correction-modal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5" id="task-test-correction-19609-correction-modal-label">4. Rectangle #4</h1><button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button></div><div class="modal-body">    <div class="actions">
+      <center>
+        <div class="alert alert-info d-none"></div>
+
+        <button name="button" type="submit" class="btn btn-primary correction_request_test_send" data-task-id="19609" data-last-request-id="9562975">Request a new review</button>
+        <button class="btn btn-secondary close-modal d-none" data-bs-dismiss="modal" type="button">Close</button>
+
+        <div class="spinner" style="display: none;">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+        <div class="error fw-semibold m-3 text-danger"></div>
+        <div class="info fw-semibold m-3"></div>
+      </center>
+    </div>
+    <div class="result"></div>
+
+    <div class="help">
+  <button data-task-id="19609">
+    <i aria-hidden="true" class="fa-solid fa-circle-info"></i>
+  </button>
+  <div class="help-container" data-task-id="19609">
+    <div class="check-line">
+      <div class="check-inline requirement success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Requirement success</span>
+      </div>
+      <div class="check-inline requirement fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Requirement fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline code success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Code success</span>
+      </div>
+      <div class="check-inline code fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Code fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline efficiency success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Efficiency success</span>
+      </div>
+      <div class="check-inline efficiency fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Efficiency fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline answer success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Text answer success</span>
+      </div>
+      <div class="check-inline answer fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Text answer fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline requirement fail offline">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Skipped - Previous check failed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div></div></div><div aria-labelledby="task-test-correction-19610-correction-modal-label" class="modal modal-lg fade student_modal task_correction_modal text-start checker_in_beta" id="task-test-correction-19610-correction-modal" tabindex="-1" aria-hidden="true" style="display: none;"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5" id="task-test-correction-19610-correction-modal-label">5. Square #0</h1><button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button></div><div class="modal-body">    <div class="actions">
+      <center>
+        <div class="alert alert-info">Some checks are failing. Make sure you fix them before starting a new review<br><strong>You got this!</strong></div>
+
+        <button name="button" type="submit" class="btn btn-primary correction_request_test_send" data-task-id="19610" data-last-request-id="9562976" style="">Request a new review</button>
+        <button class="btn btn-secondary close-modal" data-bs-dismiss="modal" type="button">Close</button>
+
+        <div class="spinner" style="display: none;">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+        <div class="error fw-semibold m-3 text-danger" style="display: none;"></div>
+        <div class="info fw-semibold m-3" style="display: none;"></div>
+      </center>
+    </div>
+    <div class="result" style=""><hr><h4>Result:</h4><div class="well"><h5>Commit used:</h5><ul><li><b>URL: </b><a target="_blank" href="https://github.com/n-elie7/alu-higher_level_programming/tree/009492d2221ea437dde9d8253617ff4a878667a1">Click here</a></li><li><b>ID: </b><code>009492d2221ea437dde9d8253617ff4a878667a1</code></li><li><b>Author: </b><span>Elie</span></li><li><b>Subject: </b><em>implemented square class</em></li><li><b>Date: </b><span>2026-01-28 16:49:49 +0200</span></li></ul></div><ul class="correction-request-timeline">
+    <li class="timeline-event passed requirement" title="">
+      <div class="timeline-event-head " data-gtm-custom-event-options="{&quot;checkId&quot;:133037,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>File is present</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+      </div>
+</li>    <li class="timeline-event passed requirement" title="">
+      <div class="timeline-event-head " data-gtm-custom-event-options="{&quot;checkId&quot;:133038,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>First line contains <code>#!/usr/bin/node</code></p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+      </div>
+</li>    <li class="timeline-event passed requirement" title="">
+      <div class="timeline-event-head " data-gtm-custom-event-options="{&quot;checkId&quot;:133039,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>You must use the <code>class</code> notation for defining your class and <code>extends</code></p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+      </div>
+</li>    <li class="timeline-event passed requirement" title="">
+      <div class="timeline-event-head " data-gtm-custom-event-options="{&quot;checkId&quot;:133040,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>You are not allowed to use <code>var</code></p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+      </div>
+</li>    <li class="timeline-event passed requirement" title="">
+      <div class="timeline-event-head " data-gtm-custom-event-options="{&quot;checkId&quot;:133047,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>The constructor of <code>Rectangle</code> must be called</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+      </div>
+</li>    <li class="timeline-event passed code" title="">
+      <div class="timeline-event-head expandable" data-gtm-custom-event-options="{&quot;checkId&quot;:133041,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>Correct output - size = 4</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+          <div class="timeline-event-body">
+            <ul class="fa-ul">
+                <li>
+                  <span class="fa-li"><i aria-hidden="true" class="fa-regular fa-copy" title="Files used by the Checker"></i></span>
+                  <div class="check-files">
+                      <a class="check-file" href="https://s3.amazonaws.com/alu-intranet.hbtn.io/files/correction_system/2133/19610/main_0.js?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUZTW2RLVB%2F20260129%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260129T112309Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=8148d7d155d68e3df5a96dd7b9c52d40dce2093310c7d6e760c3418d97ab592e" target="_blank">main_0.js</a>
+                  </div>
+                </li>
+            </ul>
+          </div>
+      </div>
+</li>    <li class="timeline-event passed code" title="">
+      <div class="timeline-event-head expandable" data-gtm-custom-event-options="{&quot;checkId&quot;:133042,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>Correct output - size = 4 - print</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+          <div class="timeline-event-body">
+            <ul class="fa-ul">
+                <li>
+                  <span class="fa-li"><i aria-hidden="true" class="fa-regular fa-copy" title="Files used by the Checker"></i></span>
+                  <div class="check-files">
+                      <a class="check-file" href="https://s3.amazonaws.com/alu-intranet.hbtn.io/files/correction_system/2133/19610/main_1.js?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUZTW2RLVB%2F20260129%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260129T112309Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9950563fabfad00d195b11c2d104c9c714fbe61a5a5c0bdec9559e8a72026c86" target="_blank">main_1.js</a>
+                  </div>
+                </li>
+            </ul>
+          </div>
+      </div>
+</li>    <li class="timeline-event passed code" title="">
+      <div class="timeline-event-head expandable" data-gtm-custom-event-options="{&quot;checkId&quot;:133043,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>Correct output - size = 4 - print - double - print</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+          <div class="timeline-event-body">
+            <ul class="fa-ul">
+                <li>
+                  <span class="fa-li"><i aria-hidden="true" class="fa-regular fa-copy" title="Files used by the Checker"></i></span>
+                  <div class="check-files">
+                      <a class="check-file" href="https://s3.amazonaws.com/alu-intranet.hbtn.io/files/correction_system/2133/19610/main_2.js?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUZTW2RLVB%2F20260129%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260129T112309Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2b2b4d8481d16a459311c520f8d69630738162ee41ddb1aa4457c7bbe67a0ce4" target="_blank">main_2.js</a>
+                  </div>
+                </li>
+            </ul>
+          </div>
+      </div>
+</li>    <li class="timeline-event passed code" title="">
+      <div class="timeline-event-head expandable" data-gtm-custom-event-options="{&quot;checkId&quot;:133044,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>Correct output - size = 5 - print - double - print - rotate - print</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+          <div class="timeline-event-body">
+            <ul class="fa-ul">
+                <li>
+                  <span class="fa-li"><i aria-hidden="true" class="fa-regular fa-copy" title="Files used by the Checker"></i></span>
+                  <div class="check-files">
+                      <a class="check-file" href="https://s3.amazonaws.com/alu-intranet.hbtn.io/files/correction_system/2133/19610/main_3.js?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUZTW2RLVB%2F20260129%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260129T112309Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=68784b2c7f75a37eb3558636505b2d5f97e66516ea33bc828a28b7da281f8c9c" target="_blank">main_3.js</a>
+                  </div>
+                </li>
+            </ul>
+          </div>
+      </div>
+</li>    <li class="timeline-event passed code" title="">
+      <div class="timeline-event-head expandable" data-gtm-custom-event-options="{&quot;checkId&quot;:133045,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>Correct output - size = -4</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+          <div class="timeline-event-body">
+            <ul class="fa-ul">
+                <li>
+                  <span class="fa-li"><i aria-hidden="true" class="fa-regular fa-copy" title="Files used by the Checker"></i></span>
+                  <div class="check-files">
+                      <a class="check-file" href="https://s3.amazonaws.com/alu-intranet.hbtn.io/files/correction_system/2133/19610/main_4.js?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUZTW2RLVB%2F20260129%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260129T112309Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d7a7d0c04178b621402abb02c023af1aafc014b76519f91748f420703d1916b4" target="_blank">main_4.js</a>
+                  </div>
+                </li>
+            </ul>
+          </div>
+      </div>
+</li>    <li class="timeline-event failed requirement" title="">
+      <div class="timeline-event-head expandable" data-gtm-custom-event-options="{&quot;checkId&quot;:133046,&quot;passed&quot;:false,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-xmark"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>semistandard validation</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+          <div class="timeline-event-body">
+            <ul class="fa-ul">
+                <li>
+                  <span class="fa-li"><i aria-hidden="true" class="fa-solid fa-info"></i></span>
+                  <pre><code>  /tmp/correction/7167780995892196951818162070156105226510_5/2133/6995/javascript_objects_scopes_closures/5-square.js:5:31: Missing space before opening brace. (space-before-blocks)
+semistandard: Semicolons For All! (https://github.com/standard/semistandard)
+semistandard: Run `semistandard --fix` to automatically fix some problems.
+</code></pre>
+                </li>
+            </ul>
+          </div>
+      </div>
+</li></ul>
+</div>
+
+    <div class="help" style="display: block;">
+  <button data-task-id="19610">
+    <i aria-hidden="true" class="fa-solid fa-circle-info"></i>
+  </button>
+  <div class="help-container" data-task-id="19610">
+    <div class="check-line">
+      <div class="check-inline requirement success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Requirement success</span>
+      </div>
+      <div class="check-inline requirement fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Requirement fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline code success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Code success</span>
+      </div>
+      <div class="check-inline code fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Code fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline efficiency success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Efficiency success</span>
+      </div>
+      <div class="check-inline efficiency fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Efficiency fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline answer success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Text answer success</span>
+      </div>
+      <div class="check-inline answer fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Text answer fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline requirement fail offline">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Skipped - Previous check failed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div></div></div><div aria-labelledby="task-test-correction-19611-correction-modal-label" class="modal modal-lg fade student_modal task_correction_modal text-start checker_in_beta" id="task-test-correction-19611-correction-modal" tabindex="-1" aria-hidden="true" style="display: none;"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5" id="task-test-correction-19611-correction-modal-label">6. Square #1</h1><button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button></div><div class="modal-body">    <div class="actions">
+      <center>
+        <div class="alert alert-info"><strong>Congratulations!</strong> All tests passed successfully!<br>You are ready for your next mission!</div>
+
+        <button name="button" type="submit" class="btn btn-primary correction_request_test_send" data-task-id="19611" style="">Request a new review</button>
+        <button class="btn btn-secondary close-modal" data-bs-dismiss="modal" type="button">Close</button>
+
+        <div class="spinner" style="display: none;">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+        <div class="error fw-semibold m-3 text-danger" style="display: none;"></div>
+        <div class="info fw-semibold m-3" style="display: none;"></div>
+      </center>
+    </div>
+    <div class="result" style=""><hr><h4>Result:</h4><div class="well"><h5>Commit used:</h5><ul><li><b>URL: </b><a target="_blank" href="https://github.com/n-elie7/alu-higher_level_programming/tree/aef0aafa8b09f2c312adcdfd58ba05957955f4fa">Click here</a></li><li><b>ID: </b><code>aef0aafa8b09f2c312adcdfd58ba05957955f4fa</code></li><li><b>Author: </b><span>Elie</span></li><li><b>Subject: </b><em>solved 7th puzzle</em></li><li><b>Date: </b><span>2026-01-29 14:10:25 +0200</span></li></ul></div><ul class="correction-request-timeline">
+    <li class="timeline-event passed requirement" title="">
+      <div class="timeline-event-head " data-gtm-custom-event-options="{&quot;checkId&quot;:133048,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>File is present</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+      </div>
+</li>    <li class="timeline-event passed requirement" title="">
+      <div class="timeline-event-head " data-gtm-custom-event-options="{&quot;checkId&quot;:133049,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>First line contains <code>#!/usr/bin/node</code></p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+      </div>
+</li>    <li class="timeline-event passed requirement" title="">
+      <div class="timeline-event-head " data-gtm-custom-event-options="{&quot;checkId&quot;:133050,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>You must use the <code>class</code> notation for defining your class and <code>extends</code></p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+      </div>
+</li>    <li class="timeline-event passed requirement" title="">
+      <div class="timeline-event-head " data-gtm-custom-event-options="{&quot;checkId&quot;:133051,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>You are not allowed to use <code>var</code></p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+      </div>
+</li>    <li class="timeline-event passed code" title="">
+      <div class="timeline-event-head expandable" data-gtm-custom-event-options="{&quot;checkId&quot;:133052,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>Correct output - size 5 - print</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+          <div class="timeline-event-body">
+            <ul class="fa-ul">
+                <li>
+                  <span class="fa-li"><i aria-hidden="true" class="fa-regular fa-copy" title="Files used by the Checker"></i></span>
+                  <div class="check-files">
+                      <a class="check-file" href="https://s3.amazonaws.com/alu-intranet.hbtn.io/files/correction_system/2133/19611/main_0.js?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUZTW2RLVB%2F20260129%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260129T121054Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=7ac3137812ddd35cca75fde66b96f232f11974fb3110c94c7bd8ac0199a41e20" target="_blank">main_0.js</a>
+                  </div>
+                </li>
+            </ul>
+          </div>
+      </div>
+</li>    <li class="timeline-event passed requirement" title="">
+      <div class="timeline-event-head " data-gtm-custom-event-options="{&quot;checkId&quot;:133058,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>Inherits from <code>Square</code> of <code>5-square.js</code></p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+      </div>
+</li>    <li class="timeline-event passed code" title="">
+      <div class="timeline-event-head expandable" data-gtm-custom-event-options="{&quot;checkId&quot;:133053,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>Correct output - size 5 - charPrint(‘D’)</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+          <div class="timeline-event-body">
+            <ul class="fa-ul">
+                <li>
+                  <span class="fa-li"><i aria-hidden="true" class="fa-regular fa-copy" title="Files used by the Checker"></i></span>
+                  <div class="check-files">
+                      <a class="check-file" href="https://s3.amazonaws.com/alu-intranet.hbtn.io/files/correction_system/2133/19611/main_1.js?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUZTW2RLVB%2F20260129%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260129T121054Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c5444b523d9681c7e8f231d5a1045387130e9836f8583aea654871536d29519d" target="_blank">main_1.js</a>
+                  </div>
+                </li>
+            </ul>
+          </div>
+      </div>
+</li>    <li class="timeline-event passed code" title="">
+      <div class="timeline-event-head expandable" data-gtm-custom-event-options="{&quot;checkId&quot;:133054,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>Correct output - size 5 - charPrint()</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+          <div class="timeline-event-body">
+            <ul class="fa-ul">
+                <li>
+                  <span class="fa-li"><i aria-hidden="true" class="fa-regular fa-copy" title="Files used by the Checker"></i></span>
+                  <div class="check-files">
+                      <a class="check-file" href="https://s3.amazonaws.com/alu-intranet.hbtn.io/files/correction_system/2133/19611/main_2.js?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUZTW2RLVB%2F20260129%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260129T121054Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=5840b4a560444dbce2188d30f7aae597a5e80f020db8fbe1949ef971ad37fe7c" target="_blank">main_2.js</a>
+                  </div>
+                </li>
+            </ul>
+          </div>
+      </div>
+</li>    <li class="timeline-event passed code" title="">
+      <div class="timeline-event-head expandable" data-gtm-custom-event-options="{&quot;checkId&quot;:133055,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>Correct output - size 5 - charPrint(‘KKK’)</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+          <div class="timeline-event-body">
+            <ul class="fa-ul">
+                <li>
+                  <span class="fa-li"><i aria-hidden="true" class="fa-regular fa-copy" title="Files used by the Checker"></i></span>
+                  <div class="check-files">
+                      <a class="check-file" href="https://s3.amazonaws.com/alu-intranet.hbtn.io/files/correction_system/2133/19611/main_3.js?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUZTW2RLVB%2F20260129%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260129T121054Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=657044331fa033da10772b93dd82f8f5aa0b0ebd999ae8d35340a1fe083b7a16" target="_blank">main_3.js</a>
+                  </div>
+                </li>
+            </ul>
+          </div>
+      </div>
+</li>    <li class="timeline-event passed code" title="">
+      <div class="timeline-event-head expandable" data-gtm-custom-event-options="{&quot;checkId&quot;:133056,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>Correct output - size 3 - charPrint(‘D’) - double - charPrint(‘O’)</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+          <div class="timeline-event-body">
+            <ul class="fa-ul">
+                <li>
+                  <span class="fa-li"><i aria-hidden="true" class="fa-regular fa-copy" title="Files used by the Checker"></i></span>
+                  <div class="check-files">
+                      <a class="check-file" href="https://s3.amazonaws.com/alu-intranet.hbtn.io/files/correction_system/2133/19611/main_4.js?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUZTW2RLVB%2F20260129%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260129T121054Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=035313b6c8fbbe67e10b429e8e86ed7936e8f556a0ecad2a9b98e53fc9b2fe2d" target="_blank">main_4.js</a>
+                  </div>
+                </li>
+            </ul>
+          </div>
+      </div>
+</li>    <li class="timeline-event passed requirement" title="">
+      <div class="timeline-event-head " data-gtm-custom-event-options="{&quot;checkId&quot;:133057,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>semistandard validation</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+      </div>
+</li></ul>
+</div>
+
+    <div class="help" style="display: block;">
+  <button data-task-id="19611">
+    <i aria-hidden="true" class="fa-solid fa-circle-info"></i>
+  </button>
+  <div class="help-container" data-task-id="19611">
+    <div class="check-line">
+      <div class="check-inline requirement success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Requirement success</span>
+      </div>
+      <div class="check-inline requirement fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Requirement fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline code success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Code success</span>
+      </div>
+      <div class="check-inline code fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Code fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline efficiency success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Efficiency success</span>
+      </div>
+      <div class="check-inline efficiency fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Efficiency fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline answer success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Text answer success</span>
+      </div>
+      <div class="check-inline answer fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Text answer fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline requirement fail offline">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Skipped - Previous check failed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div></div></div><div aria-labelledby="task-test-correction-19615-correction-modal-label" class="modal modal-lg fade student_modal task_correction_modal text-start checker_in_beta" id="task-test-correction-19615-correction-modal" tabindex="-1" aria-hidden="true" style="display: none;"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5" id="task-test-correction-19615-correction-modal-label">7. Occurrences</h1><button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button></div><div class="modal-body">    <div class="actions">
+      <center>
+        <div class="alert alert-info"><strong>Congratulations!</strong> All tests passed successfully!<br>You are ready for your next mission!</div>
+
+        <button name="button" type="submit" class="btn btn-primary correction_request_test_send" data-task-id="19615" style="">Request a new review</button>
+        <button class="btn btn-secondary close-modal" data-bs-dismiss="modal" type="button">Close</button>
+
+        <div class="spinner" style="display: none;">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+        <div class="error fw-semibold m-3 text-danger" style="display: none;"></div>
+        <div class="info fw-semibold m-3" style="display: none;"></div>
+      </center>
+    </div>
+    <div class="result" style=""><hr><h4>Result:</h4><div class="well"><h5>Commit used:</h5><ul><li><b>URL: </b><a target="_blank" href="https://github.com/n-elie7/alu-higher_level_programming/tree/aef0aafa8b09f2c312adcdfd58ba05957955f4fa">Click here</a></li><li><b>ID: </b><code>aef0aafa8b09f2c312adcdfd58ba05957955f4fa</code></li><li><b>Author: </b><span>Elie</span></li><li><b>Subject: </b><em>solved 7th puzzle</em></li><li><b>Date: </b><span>2026-01-29 14:10:25 +0200</span></li></ul></div><ul class="correction-request-timeline">
+    <li class="timeline-event passed requirement" title="">
+      <div class="timeline-event-head " data-gtm-custom-event-options="{&quot;checkId&quot;:133085,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>File is present</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+      </div>
+</li>    <li class="timeline-event passed requirement" title="">
+      <div class="timeline-event-head " data-gtm-custom-event-options="{&quot;checkId&quot;:133086,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>First line contains <code>#!/usr/bin/node</code></p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+      </div>
+</li>    <li class="timeline-event passed requirement" title="">
+      <div class="timeline-event-head " data-gtm-custom-event-options="{&quot;checkId&quot;:133087,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>You are not allowed to use <code>var</code></p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+      </div>
+</li>    <li class="timeline-event passed code" title="">
+      <div class="timeline-event-head expandable" data-gtm-custom-event-options="{&quot;checkId&quot;:133088,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>Correct output for <code>nbOccurences([1, 2, 3, 4, 5, 6], 3)</code> -&gt; 1</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+          <div class="timeline-event-body">
+            <ul class="fa-ul">
+                <li>
+                  <span class="fa-li"><i aria-hidden="true" class="fa-regular fa-copy" title="Files used by the Checker"></i></span>
+                  <div class="check-files">
+                      <a class="check-file" href="https://s3.amazonaws.com/alu-intranet.hbtn.io/files/correction_system/2133/19615/main_0.js?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUZTW2RLVB%2F20260129%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260129T121049Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=90099a156e23ce7103854a53446762444ae588b05f677b3941633ee19e8617fa" target="_blank">main_0.js</a>
+                  </div>
+                </li>
+            </ul>
+          </div>
+      </div>
+</li>    <li class="timeline-event passed code" title="">
+      <div class="timeline-event-head expandable" data-gtm-custom-event-options="{&quot;checkId&quot;:133089,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>Correct output for <code>nbOccurences([1, 2, 3, 4, 5, 6], 10)</code> -&gt; 0</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+          <div class="timeline-event-body">
+            <ul class="fa-ul">
+                <li>
+                  <span class="fa-li"><i aria-hidden="true" class="fa-regular fa-copy" title="Files used by the Checker"></i></span>
+                  <div class="check-files">
+                      <a class="check-file" href="https://s3.amazonaws.com/alu-intranet.hbtn.io/files/correction_system/2133/19615/main_1.js?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUZTW2RLVB%2F20260129%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260129T121049Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9c873b9f0a75b15015b06f0e1c8183df2e826f95825e7617381164ea42e9b8c8" target="_blank">main_1.js</a>
+                  </div>
+                </li>
+            </ul>
+          </div>
+      </div>
+</li>    <li class="timeline-event passed code" title="">
+      <div class="timeline-event-head expandable" data-gtm-custom-event-options="{&quot;checkId&quot;:133090,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>Correct output for <code>nbOccurences(["3", 2, "3", 4, 5, 6, "3"], "3")</code> -&gt; 3</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+          <div class="timeline-event-body">
+            <ul class="fa-ul">
+                <li>
+                  <span class="fa-li"><i aria-hidden="true" class="fa-regular fa-copy" title="Files used by the Checker"></i></span>
+                  <div class="check-files">
+                      <a class="check-file" href="https://s3.amazonaws.com/alu-intranet.hbtn.io/files/correction_system/2133/19615/main_2.js?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUZTW2RLVB%2F20260129%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260129T121049Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a4bb21735f5c18d04700f1ef724f436daf3ddc7145ca5dfbb9b96e452c54387d" target="_blank">main_2.js</a>
+                  </div>
+                </li>
+            </ul>
+          </div>
+      </div>
+</li>    <li class="timeline-event passed code" title="">
+      <div class="timeline-event-head expandable" data-gtm-custom-event-options="{&quot;checkId&quot;:133091,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+            <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>Correct output for <code>nbOccurences(["3", 2, "3", 3, 4, 5, 6, "3"], 3)</code> -&gt; 1</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+          <div class="timeline-event-body">
+            <ul class="fa-ul">
+                <li>
+                  <span class="fa-li"><i aria-hidden="true" class="fa-regular fa-copy" title="Files used by the Checker"></i></span>
+                  <div class="check-files">
+                      <a class="check-file" href="https://s3.amazonaws.com/alu-intranet.hbtn.io/files/correction_system/2133/19615/main_3.js?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUZTW2RLVB%2F20260129%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260129T121049Z&amp;X-Amz-Expires=86400&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=940ead683c015132e26595ce4cbc0c5853368661bd62ee1d2cd71cb06ad596ac" target="_blank">main_3.js</a>
+                  </div>
+                </li>
+            </ul>
+          </div>
+      </div>
+</li>    <li class="timeline-event passed requirement" title="">
+      <div class="timeline-event-head " data-gtm-custom-event-options="{&quot;checkId&quot;:133092,&quot;passed&quot;:true,&quot;previousCheckFailed&quot;:false}">
+        <span class="timeline-event-chevron" style="width: 10px;">
+        </span>
+        <span class="timeline-event-sticker colored">
+          <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
+        </span>
+        <span class="timeline-event-title">
+          <p>semistandard validation</p>
+
+        
+      </span></div>
+
+      <div class="timeline-event-content">
+      </div>
+</li></ul>
+</div>
+
+    <div class="help" style="display: block;">
+  <button data-task-id="19615">
+    <i aria-hidden="true" class="fa-solid fa-circle-info"></i>
+  </button>
+  <div class="help-container" data-task-id="19615">
+    <div class="check-line">
+      <div class="check-inline requirement success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Requirement success</span>
+      </div>
+      <div class="check-inline requirement fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Requirement fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline code success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Code success</span>
+      </div>
+      <div class="check-inline code fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Code fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline efficiency success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Efficiency success</span>
+      </div>
+      <div class="check-inline efficiency fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Efficiency fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline answer success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Text answer success</span>
+      </div>
+      <div class="check-inline answer fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Text answer fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline requirement fail offline">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Skipped - Previous check failed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div></div></div><div aria-hidden="true" aria-labelledby="task-test-correction-19616-correction-modal-label" class="modal modal-lg fade student_modal task_correction_modal text-start checker_in_beta" id="task-test-correction-19616-correction-modal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5" id="task-test-correction-19616-correction-modal-label">8. Esrever</h1><button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button></div><div class="modal-body">    <div class="actions">
+      <center>
+        <div class="alert alert-info d-none"></div>
+
+        <button name="button" type="submit" class="btn btn-primary correction_request_test_send" data-task-id="19616">Request a new review</button>
+        <button class="btn btn-secondary close-modal d-none" data-bs-dismiss="modal" type="button">Close</button>
+
+        <div class="spinner" style="display: none;">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+        <div class="error fw-semibold m-3 text-danger"></div>
+        <div class="info fw-semibold m-3"></div>
+      </center>
+    </div>
+    <div class="result"></div>
+
+    <div class="help">
+  <button data-task-id="19616">
+    <i aria-hidden="true" class="fa-solid fa-circle-info"></i>
+  </button>
+  <div class="help-container" data-task-id="19616">
+    <div class="check-line">
+      <div class="check-inline requirement success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Requirement success</span>
+      </div>
+      <div class="check-inline requirement fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Requirement fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline code success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Code success</span>
+      </div>
+      <div class="check-inline code fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Code fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline efficiency success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Efficiency success</span>
+      </div>
+      <div class="check-inline efficiency fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Efficiency fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline answer success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Text answer success</span>
+      </div>
+      <div class="check-inline answer fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Text answer fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline requirement fail offline">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Skipped - Previous check failed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div></div></div><div aria-hidden="true" aria-labelledby="task-test-correction-19617-correction-modal-label" class="modal modal-lg fade student_modal task_correction_modal text-start checker_in_beta" id="task-test-correction-19617-correction-modal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5" id="task-test-correction-19617-correction-modal-label">9. Log me</h1><button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button></div><div class="modal-body">    <div class="actions">
+      <center>
+        <div class="alert alert-info d-none"></div>
+
+        <button name="button" type="submit" class="btn btn-primary correction_request_test_send" data-task-id="19617">Request a new review</button>
+        <button class="btn btn-secondary close-modal d-none" data-bs-dismiss="modal" type="button">Close</button>
+
+        <div class="spinner" style="display: none;">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+        <div class="error fw-semibold m-3 text-danger"></div>
+        <div class="info fw-semibold m-3"></div>
+      </center>
+    </div>
+    <div class="result"></div>
+
+    <div class="help">
+  <button data-task-id="19617">
+    <i aria-hidden="true" class="fa-solid fa-circle-info"></i>
+  </button>
+  <div class="help-container" data-task-id="19617">
+    <div class="check-line">
+      <div class="check-inline requirement success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Requirement success</span>
+      </div>
+      <div class="check-inline requirement fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Requirement fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline code success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Code success</span>
+      </div>
+      <div class="check-inline code fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Code fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline efficiency success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Efficiency success</span>
+      </div>
+      <div class="check-inline efficiency fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Efficiency fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline answer success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Text answer success</span>
+      </div>
+      <div class="check-inline answer fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Text answer fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline requirement fail offline">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Skipped - Previous check failed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div></div></div><div aria-hidden="true" aria-labelledby="task-test-correction-19618-correction-modal-label" class="modal modal-lg fade student_modal task_correction_modal text-start checker_in_beta" id="task-test-correction-19618-correction-modal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5" id="task-test-correction-19618-correction-modal-label">10. Number conversion</h1><button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button></div><div class="modal-body">    <div class="actions">
+      <center>
+        <div class="alert alert-info d-none"></div>
+
+        <button name="button" type="submit" class="btn btn-primary correction_request_test_send" data-task-id="19618">Request a new review</button>
+        <button class="btn btn-secondary close-modal d-none" data-bs-dismiss="modal" type="button">Close</button>
+
+        <div class="spinner" style="display: none;">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+        <div class="error fw-semibold m-3 text-danger"></div>
+        <div class="info fw-semibold m-3"></div>
+      </center>
+    </div>
+    <div class="result"></div>
+
+    <div class="help">
+  <button data-task-id="19618">
+    <i aria-hidden="true" class="fa-solid fa-circle-info"></i>
+  </button>
+  <div class="help-container" data-task-id="19618">
+    <div class="check-line">
+      <div class="check-inline requirement success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Requirement success</span>
+      </div>
+      <div class="check-inline requirement fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Requirement fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline code success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Code success</span>
+      </div>
+      <div class="check-inline code fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Code fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline efficiency success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Efficiency success</span>
+      </div>
+      <div class="check-inline efficiency fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Efficiency fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline answer success">
+        <i aria-hidden="true" class="fa-solid fa-circle-check fa-fw"></i><span>Text answer success</span>
+      </div>
+      <div class="check-inline answer fail">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Text answer fail</span>
+      </div>
+    </div>
+    <div class="check-line">
+      <div class="check-inline requirement fail offline">
+        <i aria-hidden="true" class="fa-solid fa-circle-xmark fa-fw"></i><span>Skipped - Previous check failed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div></div></div><div aria-hidden="true" aria-labelledby="container-specs-modal-label" class="modal modal-lg fade" id="container-specs-modal" tabindex="-1"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5" id="container-specs-modal-label">Recommended Sandbox</h1><button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button></div><div class="modal-body"><div data-react-class="user_containers/ContainerSpecs" data-react-props="{&quot;containerModelName&quot;:&quot;Sandbox&quot;,&quot;containerSpecs&quot;:[{&quot;available&quot;:true,&quot;description&quot;:&quot;\u003cp\u003eUbuntu 20.04 with NodeJS 14\u003c/p\u003e\n&quot;,&quot;id&quot;:44,&quot;name&quot;:&quot;Ubuntu 20.04 - NodeJS 14&quot;,&quot;online&quot;:true}],&quot;containersLimit&quot;:2,&quot;csrfToken&quot;:&quot;kzFErFdcqMa6OuickXnzNuuzuNGZztcm7xN5X_IEjoHOxbjklhhv9jcsMCII4H7A-BdLFxlsEnibvDs5v45eSw&quot;,&quot;startStatusURI&quot;:&quot;/user_containers/start_status.json&quot;,&quot;startURI&quot;:&quot;/user_containers/start.json&quot;}" data-react-cache-id="user_containers/ContainerSpecs-0"><div><div class="d-flex gap-4 sandboxes-filters"><a class="btn btn-outline-primary text-nowrap"><i aria-hidden="true" class="fa-solid fa-filter me-1"></i><span>Running only</span></a><input class="form-control" placeholder="Search for an image ..." type="search" value="" style="width: 100%;"></div><div class="mt-3"><h3>1 image<small class="ms-2">(0/2 Sandboxes spawned)</small></h3></div><div class="vstack gap-3 mt-3"><div class="card"><div class="card-body"><div class="hstack align-items-start flex-wrap justify-content-between"><div><h5 class="card-title mb-0"><i aria-hidden="true" class="fa-solid fa-terminal fa-fw text-danger"></i><span class="ms-2">Ubuntu 20.04 - NodeJS 14</span></h5><h6 class="card-subtitle mb-0 mt-2 text-muted"><p>Ubuntu 20.04 with NodeJS 14</p>
+</h6></div><div class="d-flex flex-wrap gap-5"><a class="btn btn-success"><i aria-hidden="true" class="fa-solid fa-play fa-fw me-1"></i><span>Run</span></a></div></div></div></div></div></div></div></div></div></div></div><div aria-hidden="true" aria-labelledby="markdown-guide-modal-label" class="modal modal-lg fade" id="markdown-guide-modal" tabindex="-1"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5" id="markdown-guide-modal-label">Markdown guide</h1><button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button></div><div class="modal-body"><h4>Emphasis</h4>
+<pre>**<strong>bold</strong>**
+*<em>italics</em>*
+~~<strike>strikethrough</strike>~~</pre>
+<h4>Headers</h4>
+<pre># Big header
+## Medium header
+### Small header
+#### Tiny header</pre>
+<h4>Lists</h4>
+<pre>* Generic list item
+* Generic list item
+* Generic list item
+
+1. Numbered list item
+2. Numbered list item
+3. Numbered list item</pre>
+<h4>Links</h4>
+<pre>[Text to display](http://www.example.com)</pre>
+<h4>Quotes</h4>
+<pre>&gt; This is a quote.
+&gt; It can span multiple lines!</pre>
+<h4>Images</h4>
+<p>CSS style available: <code>width, height, opacity</code></p>
+<pre>![](http://www.example.com/image.jpg)
+![](http://www.example.com/image.jpg | width: 200px)
+![](http://www.example.com/image.jpg | height: 124px | width: 80px | opacity: 0.6)
+</pre>
+<h4>Rive Animations</h4>
+<pre>::rive
+src: https://public.rive.app/hosted/526643/217411/zunEg525W06JrBf1eqKrsQ.riv
+width: 960
+height: 300
+stateMachine: "State Machine 1"
+::
+</pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+  <li><code>src:</code> URL to the hosted Rive file (.riv)</li>
+  <li><code>width:</code> Width of the animation in pixels</li>
+  <li><code>height:</code> Height of the animation in pixels</li>
+  <li><code>stateMachine:</code> Name of the state machine to play</li>
+</ul>
+<h4>Tables</h4>
+<pre>| Column 1 | Column 2 | Column 3 |
+| -------- | -------- | -------- |
+| John     | Doe      | Male     |
+| Mary     | Smith    | Female   |
+
+<em>Or without aligning the columns...</em>
+
+| Column 1 | Column 2 | Column 3 |
+| -------- | -------- | -------- |
+| John | Doe | Male |
+| Mary | Smith | Female |
+</pre>
+<h4>Displaying code</h4>
+<pre>`var example = "hello!";`
+
+<em>Or spanning multiple lines...</em>
+
+```
+var example = "hello!";
+alert(example);
+```</pre>
+</div></div></div></div></body></html>
